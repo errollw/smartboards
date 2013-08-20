@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Digital Signage</title>
+
+        <!-- Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=PT+Mono' rel='stylesheet' type='text/css'>
+
+        <!-- CSS (reset all styles, then apply own) -->
+        <link href="css/html5reset.css" rel="stylesheet" />
+        <link href="css/font-awesome.min.css" rel="stylesheet" />
+        <link href="css/styles.viewer.css" rel="stylesheet" />
+ 
+        <!-- Javascript -->
+        <script type='text/javascript' src='lib/jquery-1.10.2.min.js'></script>
+        <script type='text/javascript' src='lib/jquery.svg.browser.shim.js'></script>
+        <script type='text/javascript' src='lib/jquery.svg.min.js'></script>
+        <script type='text/javascript' src='lib/wb.utils.js'></script>
+        <script type='text/javascript' src='lib/wb.iframe.js'></script>
+        <script type='text/javascript' src='lib/wb.viewer.settings.js'></script>
+        <script type='text/javascript' src='lib/wb.viewer.settings.user.js'></script>
+        <script type='text/javascript' src='lib/wb.viewer.js'></script>
+
+    </head>
+
+    <body class="flex-row">
+
+        <div id="center-col">
+
+            <!--List of all rooms-->
+            <div id="list-container" class="flex-col">
+                <div class="title">Rainbow Group Whiteboards</div>
+                
+                <div class="controls">
+                    <button class="blue settings"> <i class="icon-gears"></i>&nbsp; Settings </button>
+                    <input type="text" placeholder="filter by tags">
+                </div>
+
+                <ul id="room-list"></ul>
+            </div>
+
+            <!--Settings for currently selected room-->
+            <div id="settings-container" class="flex-col" >
+
+                <div class="title-row">
+                    <p class="title"><i class="icon-gears"></i>&nbsp; Room Settings</p>
+                    <button class="menu-bar" id="settings-save"> <i class="icon-save"></i> </button>
+                    <button class="menu-bar" id="settings-cancel"> <i class="icon-remove"></i> </button>
+                </div>
+
+                <div class="subtitle"></div>
+
+                <div class="setting"> <p>Room Name</p> <input type="text" name="r_name"> </div>
+                <div class="setting"> <p>Tags</p> <input type="text" name="tags"> </div>
+
+                <!-- Hidden target iframe for file uploads without refresh-->
+                <iframe id="target_iframe" name="target_iframe" src="#" style="display:none"></iframe>
+
+                <div id="settings-add-user"> <i class="icon-plus-sign-alt"></i> </div>
+            </div>
+        
+            <!--Whiteboard elements loaded here-->
+            <div id="wb-container" class="flex-col"></div>
+           
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<room id="r_ss14">
+  <name>SS14</name>
+  <last-mod>1376930683975</last-mod>
+  <tags>
+    <tag>tag_a</tag>
+    <tag>tag_b</tag>
+  </tags>
+  <users>
+    <user id="pr10">
+      <name>Peter Robinson</name>
+      <status>Professor of Computer Technology</status>
+      <website>
+        <url>http://www.cl.cam.ac.uk/~pr10/administration/calendar/screen.html</url>
+        <position>left</position>
+      </website>
+    </user>
+  </users>
+</room>

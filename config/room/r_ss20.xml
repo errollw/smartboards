@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<room id="r_ss20">
+  <name>SS20</name>
+  <last-mod>1377020354309</last-mod>
+  <tags>
+    <tag>tag_a</tag>
+    <tag>tag_b</tag>
+  </tags>
+  <users>
+    <user id="u_eww23">
+      <name>Erroll Wood</name>
+      <status>UROP Summer Intern</status>
+      <website>
+        <url>http://caiusmayball.com/</url>
+        <position>right</position>
+      </website>
+    </user>
+    <user id="u_li222">
+      <name>Leonardo L. Impett</name>
+      <status>UROP Summer Intern</status>
+    </user>
+  </users>
+</room>

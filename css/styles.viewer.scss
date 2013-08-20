@@ -1,0 +1,438 @@
+@import 'bourbon/bourbon';
+@import "flexbox";
+@import "colors";
+
+// ----- Variable Definitions -----
+
+$page-bg: $SILVER;
+$header-bg: $CLOUDS;
+
+$font-normal: 'Source Sans Pro', sans-serif;
+$font-mono: 'PT Mono', sans-serif;
+
+$wb-border: 6px;
+
+$page-width: 1400px;
+
+$anim-s: 1s;
+$anim-ease: $ease-out-expo;
+
+// ----- Flexbox Types -----
+
+.flex-col {
+    @include flexbox;
+    @include flex-dir(column);
+    @include align-items(stretch);
+    @include justify-content(flex-start);
+}
+
+.flex-row {
+    @include flexbox;
+    @include flex-dir(row);
+	@include align-items(center);
+    @include justify-content(center);
+}
+
+// ----- Global Attributes -----
+
+html {
+   height: 100%;
+   overflow: hidden;
+}
+
+body {
+    @include size(100% 100%);
+    
+	background: $page-bg;
+
+    // General font settings
+    font: { family: $font-normal;
+            size: 1em;
+            weight: 400;  }
+    color: $MIDNIGHT-BLUE;
+}
+
+button {
+	border: 0; margin:0; padding: 0;
+	border-radius: 3px;
+	box-shadow: inset 0 -2px rgba(0,0,0,0.2);
+
+	font-family: $font-normal;
+	font-weight: 400;
+	font-size: 14px;
+	color: white;
+
+	overflow: hidden;
+	white-space: nowrap;
+
+	cursor: pointer;
+
+	&.green  { background-color: $EMERALD }
+	&.orange { background-color: $CARROT }
+	&.red    { background-color: $ALIZARIN }
+	&.blue   { background-color: $PETER-RIVER }
+	&.teal   { background-color: $TURQUOISE }
+	&.purple { background-color: $AMETHYST }
+	&.yellow { background-color: $SUN-FLOWER }
+
+	&.menu-bar{
+		box-shadow: none;
+	}
+}
+
+input {
+	@include flex(1, 0, 1px); // This item grows
+	border-radius: 4px;
+	padding: 4px 8px;
+	margin: 0px;
+
+	font: {
+		family: $font-normal;
+		size: 13px;
+		weight: 400;  }
+
+	&:focus {
+		outline: 0;
+		border: 2px solid $TURQUOISE;
+	}
+}
+
+.mono {font-family: $font-mono;}
+
+// ----- Detailed Attributes -----
+
+#center-col {
+	@include flex(1, 0, auto); // This item grows
+
+	@include flexbox;
+    @include flex-dir(row);
+    @include align-items(stretch);
+    @include justify-content(space-between);
+
+    // Fill screen, but leave margins on either size in two-col mode
+	margin: 0px 5%;
+    width: 90%;
+	max-width: $page-width;
+}
+
+#list-container {
+	@include flex(1, 1, 1px); // This item grows and shrinks
+	background-color: $CLOUDS;
+	max-width: 30%;
+
+	> .title {
+
+		background-color: $MIDNIGHT-BLUE;
+		@include size(auto 18);
+		padding: 10px;
+		font-size: 18px;
+		color: white;
+
+		overflow: hidden;
+    	white-space: nowrap;
+	}
+
+	> .controls {
+
+		@include flexbox;
+	    @include flex-dir(row);
+	    @include align-items(center);
+	    @include justify-content(stretch);
+
+		padding: $wb-border;
+
+		button.settings {
+			@include size(auto 32);
+			padding: 0 $wb-border;
+			margin-right: $wb-border;
+			font-size: 14px;
+		}
+	}
+
+	input {
+		@include box-sizing(border-box);
+		@include size(auto 32);
+		padding: 6px;
+		border: 1px solid $SILVER;
+		color: $MIDNIGHT-BLUE;
+		font-size: 14px;
+	}
+
+	li {
+		@include flexbox;
+		@include flex-dir(row);
+		@include align-items(stretch);
+		@include justify-content(flex-start);
+
+		background-color: white;
+
+		padding: $wb-border;
+		margin-bottom: $wb-border;
+
+		overflow: hidden;
+		white-space: nowrap;
+
+		cursor: pointer;
+		
+		&.toggled, &:hover {
+			background-color: $PETER-RIVER;
+			box-shadow: inset 0 -2px $BELIZE-HOLE;
+
+			.description { 
+				.title { color: white; }
+				.subtitle { color: white; .tag { background-color: $SILVER }
+					.tag { background-color: $BELIZE-HOLE } } }
+
+			.profile-pic { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2); }
+		}
+
+		&.toggled { button.settings { display: block } }
+
+		.description {
+			@include flex(1, 2, auto); // This item grows and shrinks
+			@include align-self(stretch);
+			@include justify-content(space-between);
+
+			overflow: hidden;
+			white-space: nowrap;
+
+			padding: 4px 0px;
+
+			.title { font-size: 15px; color: $MIDNIGHT-BLUE; }
+
+			.subtitle {
+				margin-top: 10px;
+				-webkit-font-smoothing: antialiased;
+				font-size:  13px;
+				color:      $ASBESTOS;
+
+				.tag {
+					border-radius: 2px;
+					padding: 2px 4px;
+					background-color: $CLOUDS;
+
+					// @include transition ( background-color $anim-s $anim-ease );
+				}
+			}
+		}
+
+		.profile-pic {
+			@include flex(0, 0, auto); // This item doesn't shrink
+
+			border-radius: 2px;
+			background-size: cover, cover;
+			background-color: $CLOUDS;
+
+			margin: 0 0 0 $wb-border;
+        }
+	}
+}
+
+#settings-container {
+	@include flex(2, 1, 1px); // This item grows and shrinks
+	display: none;
+
+	background-color: lighten($WET-ASPHALT,2%);
+
+	max-width: 30%;
+	margin: 0 2% 0 10px;
+
+	> .title-row {
+		@include flexbox;
+	    @include flex-dir(row);
+	    @include align-items(center);
+	    @include justify-content(space-between);
+
+		@include size(auto 38);
+		padding: 0 $wb-border 0 10px;
+
+	    background-color: $PETER-RIVER;
+
+		overflow: hidden;
+    	white-space: nowrap;
+
+	    > .mono { font-size: 12px; color: lighten($PETER-RIVER,20%); }
+	    > .title { @include flex(1, 1, auto); font-size: 18px; color: white; }
+		
+		> button {
+			@include size(28 28);
+			background-color: transparent;
+			-webkit-font-smoothing: antialiased;
+			text-shadow: 0 1px rgba(0,0,0,0.2);
+
+			&:hover{background-color: $BELIZE-HOLE}
+		}
+	}
+
+	> .subtitle {
+		background-color: $MIDNIGHT-BLUE;
+		padding: $wb-border;
+		color: lighten($WET-ASPHALT,30%);
+		margin-bottom: 10px;
+		font-size: 13px;
+
+		span {font-size: 12px; font-family: $font-mono}
+	}
+
+	> #settings-add-user{
+		margin-top: 10px;
+		padding: $wb-border;
+		text-align: center;
+		color: lighten($WET-ASPHALT,30%);
+		font-size: 14px;
+		-webkit-font-smoothing: antialiased;
+		background-color: $MIDNIGHT-BLUE;
+		cursor: pointer;
+
+		&:hover{
+			color: lighten($WET-ASPHALT,40%);
+			background-color: darken($MIDNIGHT-BLUE, 2%)}
+	}
+
+	.setting {
+		@include flexbox;
+	    @include flex-dir(row);
+	    @include align-items(center);
+	    @include justify-content(stretch);
+
+		font-size: 14px;
+		color: white;
+
+		line-height: 100%;
+
+		margin: $wb-border $wb-border 0;
+
+		p { width: 35%; }
+
+		input {
+			@include box-sizing (border-box);
+			height: 30px;
+			padding: 4px $wb-border;
+			background-color: lighten($WET-ASPHALT,30%);
+			border: 0; border-radius: 2px;
+			color: $MIDNIGHT-BLUE;
+
+			@include placeholder { color: lighten($WET-ASPHALT,10%); }
+			
+			&.changed{background-color:$CLOUDS;}
+		}
+
+		button {
+			@include size(30 30);
+			border-radius: 2px;
+			margin-left: $wb-border;
+			font-size: 14px;
+			text-shadow: 0 1px rgba(0,0,0,0.2);
+
+			&.profile-pic {
+				box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+				background-size: cover, cover;
+				background-color: darken($CLOUDS, 5%); }
+
+			&.pos{
+				@include size(auto 30);
+				@include flex(1, 1, 1px);
+				font-size: 13px;
+				margin: 0 $wb-border 0 0;
+				background-color: lighten($WET-ASPHALT,10%);
+				color: $MIDNIGHT-BLUE;
+
+				&:last-child{ margin: 0}
+				&.toggled {
+					background-color: lighten($WET-ASPHALT,30%);
+					color: $MIDNIGHT-BLUE;
+					
+					&.changed{background-color:$CLOUDS;}
+				}
+			}
+		}
+	}
+
+	.user {
+		background-color: $MIDNIGHT-BLUE;
+		margin: 10px 0 0;
+		padding: 10px 0;
+
+		.setting:first-child {margin: 0 $wb-border;}
+	}
+
+	.controls {
+		@include flexbox;
+	    @include flex-dir(row);
+	    @include align-items(center);
+	    @include justify-content(stretch);
+
+	    margin: 10px $wb-border;
+
+		button {
+			@include flex(1, 0, 1px); // This item grows
+			height: 32px;
+			margin-left: $wb-border;
+			font-size: 14px;
+			font-weight: 400;
+
+			&:first-child {margin: 0}
+		}
+	}
+}
+
+#wb-container {
+
+	background: white;
+
+    .wb-pane {
+
+        @include flex(1, 0, auto); // This item grows
+
+        .wb-header {
+
+			@include justify-content(flex-start);
+
+            @include flex(0, 1, auto); // This item shrinks
+
+			background-color: $CLOUDS;
+			box-shadow: 0 2px lighten($WET-ASPHALT, 50%);
+
+			padding: $wb-border;
+
+			z-index: 1000;
+
+            .profile-pic {
+
+				@include align-self(stretch);	// Stretch height to fill header (jQuery handles aspect ratio)
+				border-radius: 2px;
+				background-size: cover, cover;
+				background-color: darken($CLOUDS, 5%);}
+
+			.description {
+
+				@include flex(1, 0, auto);		// This item grows
+
+				@include align-self(stretch);
+				@include justify-content(space-around);
+
+				padding: 0 $wb-border;
+
+				.title { color: $BELIZE-HOLE; }
+				.subtitle { color: $ASBESTOS; }
+			}
+        }
+
+		.wb-content {
+
+			@include flex(1, 0, 0); // This item grows
+
+			background-size: 100% auto;	// Scale SVG to fill width, but retain aspect ratio
+			background-position: left top;
+			background-repeat: no-repeat;
+
+			position: relative;
+			overflow: hidden;
+
+			.iframe-holder { position: absolute; top: 0px; left: 0px; }
+			.svg-holder { position: absolute; top: 0px; left: 0px;
+				@include size(100px 100px)}
+        }
+    }
+}
+

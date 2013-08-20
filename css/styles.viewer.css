@@ -1,0 +1,555 @@
+body {
+  font-family: sans-serif;
+  font-size: 30em;
+  font-weight: bold; }
+
+.flex-col {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  align-items: stretch;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  justify-content: flex-start; }
+
+.flex-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center; }
+
+html {
+  height: 100%;
+  overflow: hidden; }
+
+body {
+  width: 100%;
+  height: 100%;
+  background: #bdc3c7;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  color: #2c3e50; }
+
+button {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 3px;
+  box-shadow: inset 0 -2px rgba(0, 0, 0, 0.2);
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer; }
+  button.green {
+    background-color: #2ecc71; }
+  button.orange {
+    background-color: #e67e22; }
+  button.red {
+    background-color: #e74c3c; }
+  button.blue {
+    background-color: #3498db; }
+  button.teal {
+    background-color: #1abc9c; }
+  button.purple {
+    background-color: #9b59b6; }
+  button.yellow {
+    background-color: #f1c40f; }
+  button.menu-bar {
+    box-shadow: none; }
+
+input {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 1px;
+  -moz-flex: 1 0 1px;
+  -ms-flex: 1 0 1px;
+  flex: 1 0 1px;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin: 0px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 13px;
+  font-weight: 400; }
+  input:focus {
+    outline: 0;
+    border: 2px solid #1abc9c; }
+
+.mono {
+  font-family: "PT Mono", sans-serif; }
+
+#center-col {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -moz-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  align-items: stretch;
+  -webkit-box-pack: space-between;
+  -ms-flex-pack: space-between;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  justify-content: space-between;
+  margin: 0px 5%;
+  width: 90%;
+  max-width: 1400px; }
+
+#list-container {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 1px;
+  -moz-flex: 1 1 1px;
+  -ms-flex: 1 1 1px;
+  flex: 1 1 1px;
+  background-color: #ecf0f1;
+  max-width: 30%; }
+  #list-container > .title {
+    background-color: #2c3e50;
+    width: auto;
+    height: 18px;
+    padding: 10px;
+    font-size: 18px;
+    color: white;
+    overflow: hidden;
+    white-space: nowrap; }
+  #list-container > .controls {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-box-pack: stretch;
+    -ms-flex-pack: stretch;
+    -webkit-justify-content: stretch;
+    -moz-justify-content: stretch;
+    justify-content: stretch;
+    padding: 6px; }
+    #list-container > .controls button.settings {
+      width: auto;
+      height: 32px;
+      padding: 0 6px;
+      margin-right: 6px;
+      font-size: 14px; }
+  #list-container input {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: auto;
+    height: 32px;
+    padding: 6px;
+    border: 1px solid #bdc3c7;
+    color: #2c3e50;
+    font-size: 14px; }
+  #list-container li {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    -webkit-align-items: stretch;
+    -moz-align-items: stretch;
+    align-items: stretch;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-justify-content: flex-start;
+    -moz-justify-content: flex-start;
+    justify-content: flex-start;
+    background-color: white;
+    padding: 6px;
+    margin-bottom: 6px;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer; }
+    #list-container li.toggled, #list-container li:hover {
+      background-color: #3498db;
+      box-shadow: inset 0 -2px #2980b9; }
+      #list-container li.toggled .description .title, #list-container li:hover .description .title {
+        color: white; }
+      #list-container li.toggled .description .subtitle, #list-container li:hover .description .subtitle {
+        color: white; }
+        #list-container li.toggled .description .subtitle .tag, #list-container li:hover .description .subtitle .tag {
+          background-color: #bdc3c7; }
+        #list-container li.toggled .description .subtitle .tag, #list-container li:hover .description .subtitle .tag {
+          background-color: #2980b9; }
+      #list-container li.toggled .profile-pic, #list-container li:hover .profile-pic {
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2); }
+    #list-container li.toggled button.settings {
+      display: block; }
+    #list-container li .description {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1 2 auto;
+      -moz-flex: 1 2 auto;
+      -ms-flex: 1 2 auto;
+      flex: 1 2 auto;
+      -webkit-align-self: stretch;
+      -moz-align-self: stretch;
+      -ms-flex-item-align: stretch;
+      align-self: stretch;
+      -webkit-box-pack: space-between;
+      -ms-flex-pack: space-between;
+      -webkit-justify-content: space-between;
+      -moz-justify-content: space-between;
+      justify-content: space-between;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 4px 0px; }
+      #list-container li .description .title {
+        font-size: 15px;
+        color: #2c3e50; }
+      #list-container li .description .subtitle {
+        margin-top: 10px;
+        -webkit-font-smoothing: antialiased;
+        font-size: 13px;
+        color: #7f8c8d; }
+        #list-container li .description .subtitle .tag {
+          border-radius: 2px;
+          padding: 2px 4px;
+          background-color: #ecf0f1; }
+    #list-container li .profile-pic {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 auto;
+      -moz-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+      flex: 0 0 auto;
+      border-radius: 2px;
+      background-size: cover, cover;
+      background-color: #ecf0f1;
+      margin: 0 0 0 6px; }
+
+#settings-container {
+  -webkit-box-flex: 2;
+  -webkit-flex: 2 1 1px;
+  -moz-flex: 2 1 1px;
+  -ms-flex: 2 1 1px;
+  flex: 2 1 1px;
+  display: none;
+  background-color: #384e65;
+  max-width: 30%;
+  margin: 0 2% 0 10px; }
+  #settings-container > .title-row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-box-pack: space-between;
+    -ms-flex-pack: space-between;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between;
+    width: auto;
+    height: 38px;
+    padding: 0 6px 0 10px;
+    background-color: #3498db;
+    overflow: hidden;
+    white-space: nowrap; }
+    #settings-container > .title-row > .mono {
+      font-size: 12px;
+      color: #8bc4ea; }
+    #settings-container > .title-row > .title {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1 1 auto;
+      -moz-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
+      font-size: 18px;
+      color: white; }
+    #settings-container > .title-row > button {
+      width: 28px;
+      height: 28px;
+      background-color: transparent;
+      -webkit-font-smoothing: antialiased;
+      text-shadow: 0 1px rgba(0, 0, 0, 0.2); }
+      #settings-container > .title-row > button:hover {
+        background-color: #2980b9; }
+  #settings-container > .subtitle {
+    background-color: #2c3e50;
+    padding: 6px;
+    color: #7795b4;
+    margin-bottom: 10px;
+    font-size: 13px; }
+    #settings-container > .subtitle span {
+      font-size: 12px;
+      font-family: "PT Mono", sans-serif; }
+  #settings-container > #settings-add-user {
+    margin-top: 10px;
+    padding: 6px;
+    text-align: center;
+    color: #7795b4;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    background-color: #2c3e50;
+    cursor: pointer; }
+    #settings-container > #settings-add-user:hover {
+      color: #98afc6;
+      background-color: #283949; }
+  #settings-container .setting {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-box-pack: stretch;
+    -ms-flex-pack: stretch;
+    -webkit-justify-content: stretch;
+    -moz-justify-content: stretch;
+    justify-content: stretch;
+    font-size: 14px;
+    color: white;
+    line-height: 100%;
+    margin: 6px 6px 0; }
+    #settings-container .setting p {
+      width: 35%; }
+    #settings-container .setting input {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      height: 30px;
+      padding: 4px 6px;
+      background-color: #7795b4;
+      border: 0;
+      border-radius: 2px;
+      color: #2c3e50; }
+      #settings-container .setting input::-webkit-input-placeholder {
+        color: #46627f; }
+      #settings-container .setting input:-moz-placeholder {
+        color: #46627f; }
+      #settings-container .setting input::-moz-placeholder {
+        color: #46627f; }
+      #settings-container .setting input:-ms-input-placeholder {
+        color: #46627f; }
+      #settings-container .setting input.changed {
+        background-color: #ecf0f1; }
+    #settings-container .setting button {
+      width: 30px;
+      height: 30px;
+      border-radius: 2px;
+      margin-left: 6px;
+      font-size: 14px;
+      text-shadow: 0 1px rgba(0, 0, 0, 0.2); }
+      #settings-container .setting button.profile-pic {
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+        background-size: cover, cover;
+        background-color: #dde4e6; }
+      #settings-container .setting button.pos {
+        width: auto;
+        height: 30px;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1 1 1px;
+        -moz-flex: 1 1 1px;
+        -ms-flex: 1 1 1px;
+        flex: 1 1 1px;
+        font-size: 13px;
+        margin: 0 6px 0 0;
+        background-color: #46627f;
+        color: #2c3e50; }
+        #settings-container .setting button.pos:last-child {
+          margin: 0; }
+        #settings-container .setting button.pos.toggled {
+          background-color: #7795b4;
+          color: #2c3e50; }
+          #settings-container .setting button.pos.toggled.changed {
+            background-color: #ecf0f1; }
+  #settings-container .user {
+    background-color: #2c3e50;
+    margin: 10px 0 0;
+    padding: 10px 0; }
+    #settings-container .user .setting:first-child {
+      margin: 0 6px; }
+  #settings-container .controls {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-box-pack: stretch;
+    -ms-flex-pack: stretch;
+    -webkit-justify-content: stretch;
+    -moz-justify-content: stretch;
+    justify-content: stretch;
+    margin: 10px 6px; }
+    #settings-container .controls button {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1 0 1px;
+      -moz-flex: 1 0 1px;
+      -ms-flex: 1 0 1px;
+      flex: 1 0 1px;
+      height: 32px;
+      margin-left: 6px;
+      font-size: 14px;
+      font-weight: 400; }
+      #settings-container .controls button:first-child {
+        margin: 0; }
+
+#wb-container {
+  background: white; }
+  #wb-container .wb-pane {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    -moz-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto; }
+    #wb-container .wb-pane .wb-header {
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      -webkit-justify-content: flex-start;
+      -moz-justify-content: flex-start;
+      justify-content: flex-start;
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 1 auto;
+      -moz-flex: 0 1 auto;
+      -ms-flex: 0 1 auto;
+      flex: 0 1 auto;
+      background-color: #ecf0f1;
+      box-shadow: 0 2px #b9c8d8;
+      padding: 6px;
+      z-index: 1000; }
+      #wb-container .wb-pane .wb-header .profile-pic {
+        -webkit-align-self: stretch;
+        -moz-align-self: stretch;
+        -ms-flex-item-align: stretch;
+        align-self: stretch;
+        border-radius: 2px;
+        background-size: cover, cover;
+        background-color: #dde4e6; }
+      #wb-container .wb-pane .wb-header .description {
+        -webkit-box-flex: 1;
+        -webkit-flex: 1 0 auto;
+        -moz-flex: 1 0 auto;
+        -ms-flex: 1 0 auto;
+        flex: 1 0 auto;
+        -webkit-align-self: stretch;
+        -moz-align-self: stretch;
+        -ms-flex-item-align: stretch;
+        align-self: stretch;
+        -webkit-box-pack: space-around;
+        -ms-flex-pack: space-around;
+        -webkit-justify-content: space-around;
+        -moz-justify-content: space-around;
+        justify-content: space-around;
+        padding: 0 6px; }
+        #wb-container .wb-pane .wb-header .description .title {
+          color: #2980b9; }
+        #wb-container .wb-pane .wb-header .description .subtitle {
+          color: #7f8c8d; }
+    #wb-container .wb-pane .wb-content {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1 0 0;
+      -moz-flex: 1 0 0;
+      -ms-flex: 1 0 0;
+      flex: 1 0 0;
+      background-size: 100% auto;
+      background-position: left top;
+      background-repeat: no-repeat;
+      position: relative;
+      overflow: hidden; }
+      #wb-container .wb-pane .wb-content .iframe-holder {
+        position: absolute;
+        top: 0px;
+        left: 0px; }
+      #wb-container .wb-pane .wb-content .svg-holder {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100px;
+        height: 100px; }
+
