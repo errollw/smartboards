@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <room id="r_ss03">
   <name>SS03</name>
-  <last-mod>1377019916386</last-mod>
+  <last-mod>1377183199113</last-mod>
   <tags>
-    <tag>tag_a</tag>
-    <tag>tag_b</tag>
+    <tag>meeting</tag>
+    <tag>presentation</tag>
+    <tag>projector</tag>
   </tags>
   <users>
     <user id="u_seminar">
-      <name>Seminar Room No Prof Pic</name>
+      <name>Seminar Room</name>
       <status>Presentations, meetings, etc.</status>
       <website>
         <url>https://www.google.com/calendar/embed?wkst=1&amp;bgcolor=%23FFFFFF&amp;src=cam.ac.uk_usi6j05doi2ssb7007f5mfmerk%40group.calendar.google.com&amp;color=%238D6F47&amp;ctz=Europe%2FLondon</url>

@@ -1,19 +1,16 @@
 <?xml version='1.0' encoding='utf-8'?>
 <room id="r_ss12">
   <name>SS12</name>
-  <last-mod>1376062806505</last-mod>
-  <tags>
-    <tag>tag_a</tag>
-    <tag>tag_b</tag>
-  </tags>
+  <last-mod>1377608281948</last-mod>
+  <tags />
   <users>
-    <user id="u_tb346">
-      <name>Tadas Baltrusaitis</name>
-      <status>PhD student</status>
-    </user>
     <user id="u_mmam3">
       <name>Marwa Mahmoud</name>
-      <status>PhD student</status>
+      <status>PhD Student</status>
+    </user>
+    <user id="u_tb346">
+      <name>Tadas Baltrusaitis</name>
+      <status>PhD Student</status>
     </user>
   </users>
 </room>

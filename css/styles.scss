@@ -7,7 +7,8 @@
 $font-normal: 'Source Sans Pro', sans-serif;
 $font-mono: 'PT Mono', sans-serif;
 
-$wb-border: 1.2%;
+$wb-border: 0.8%;
+$rounded-radius: 8%;
 
 // ----- Flexbox Types -----
 
@@ -61,17 +62,21 @@ body {
 // (Each board may have several whiteboard panes)
 .wb-pane {
 
-    @include flex(1, 0, 1px); // This item grows
+    @include flex(1, 0, 1px);      		// This grows
     background-color: white;
 
-	&.faded{ background-color: $CONCRETE; }
+	&.faded{ background-color: darken($SILVER, 10%)}
+
+	> .divider {
+		@include flex(0, 0, auto); 		// This does not grow or shrink
+		min-height: 2px;
+		background-color: lighten($WET-ASPHALT, 50%);
+	}
 
 	//--- WHITEBOARD HEADER ---
 
 	> .header {
-
-		@include flex(0, 0, auto); // This item does not grow or shrink
-
+		@include flex(0, 0, auto); 		// This does not grow or shrink
 		@include flexbox;
 		@include flex-dir(row);
 		@include align-items(stretch);
@@ -79,53 +84,42 @@ body {
 
 		background-color:   $CLOUDS;
 		font-family:        $font-normal;
-	
 		padding: $wb-border;
-
-		box-shadow: 0 3px lighten($WET-ASPHALT, 50%);
 		z-index: 1000;
 
 		> .profile-pic {
-	
-			border-radius: 4px;
-			background-size: cover, cover; }
+			border-radius: $rounded-radius;
+			background-color: darken($CLOUDS,5);
+			background-size: cover, cover;
+		}
 
 		> .description {
-
-			@include flex(1, 0, auto); // This item grows
-
-			@include flexbox;
+			@include flex(1, 0, auto); 				// This item grows
+			@include flexbox;						// Description contains text rows
 			@include flex-dir(column);
-			@include justify-content(space-around);
+			@include justify-content(space-between);
 
-			padding: 0 $wb-border;
+			padding: $wb-border/2 $wb-border;
+			min-height: 32px;
 
 			> .title { color: $BELIZE-HOLE; }
-
 			> .subtitle { color: $CONCRETE; }
 		}
 
 		> .button {
 			
-			@include flex(0, 0, auto); // This item grows
-
+			@include flex(0, 0, auto);              // This item grows
 			@include box-sizing(border-box);
 
 			text-shadow: rgba(0,0,0,0.4) 0px 1px;
-
-			border-radius: 4px;
-
+			border-radius: $rounded-radius;
 			padding: 0;
-			margin: 0 0 0 $wb-border;
-
-			color: white;
-
-			font-weight: 200;
-
 			border: 0;
-
+			margin: 0 0 0 $wb-border;
+			color: white;
 			background-color: $PETER-RIVER;
 			box-shadow: inset 0 -4px rgba(0,0,0,0.2);
+			cursor: pointer;
 
 			&.red { background-color: $ALIZARIN; }
 			&.green { background-color: $EMERALD }
@@ -135,9 +129,7 @@ body {
 	/*--- WHITEBOARD CONTENT ---*/
 
 	> .wb-content {
-
 		@include flex(1, 0, auto); // This item grows
-
 		@include flexbox;
 		@include flex-dir(column);
 		@include align-items(stretch);
@@ -149,13 +141,11 @@ body {
 		.svg-holder {
 			position: absolute; top: 0px; left: 0px;
 			width: 100px; height: 100px;
-			
-			pointer-events: none;}
+			pointer-events: none;}								// Allows interaction with iframe underneath
 
 		.iframe-holder {
 			position: absolute; top: 0px; left: 0px;
-		
-			.tarp { position: absolute; top: 0px; left: 0px; }
+			.tarp { position: absolute; top: 0px; left: 0px; }	// Covers iframe to help dragging
 		}
 	}
 }
@@ -180,9 +170,9 @@ body {
 
     > .header {
         position: absolute; top:0px; left:0px; right: 0;
-        -webkit-justify-content:    space-around;
-        -webkit-align-items:        flex-start;
-		pointer-events:none;
+        pointer-events: none;
+        @include justify-content(space-around);
+        @include align-items(flex-start);
     }
 
     > .canvas {
@@ -193,8 +183,8 @@ body {
 
 .pen-options {
 	pointer-events:all;
-    -webkit-justify-content:    space-around;
-    -webkit-align-items:        flex-start;
+    @include justify-content(space-between);
+    @include align-items(flex-start);
 }
 
 .pen-option {
@@ -237,10 +227,7 @@ body {
 
 .movable {
     position: absolute;
-	
 	border: 2px solid $PETER-RIVER;
-
-
 	background-size: contain;
     background-position: center center;
 	background-repeat: no-repeat;

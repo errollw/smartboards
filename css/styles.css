@@ -116,7 +116,15 @@ body {
   background-color: white;
   /*--- WHITEBOARD CONTENT ---*/ }
   .wb-pane.faded {
-    background-color: #95a5a6; }
+    background-color: #a1aab0; }
+  .wb-pane > .divider {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    -moz-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    min-height: 2px;
+    background-color: #b9c8d8; }
   .wb-pane > .header {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 auto;
@@ -146,11 +154,11 @@ body {
     justify-content: flex-start;
     background-color: #ecf0f1;
     font-family: "Source Sans Pro", sans-serif;
-    padding: 1.2%;
-    box-shadow: 0 3px #b9c8d8;
+    padding: 0.8%;
     z-index: 1000; }
     .wb-pane > .header > .profile-pic {
-      border-radius: 4px;
+      border-radius: 8%;
+      background-color: #dde4e6;
       background-size: cover, cover; }
     .wb-pane > .header > .description {
       -webkit-box-flex: 1;
@@ -169,12 +177,13 @@ body {
       -moz-flex-direction: column;
       -ms-flex-direction: column;
       flex-direction: column;
-      -webkit-box-pack: space-around;
-      -ms-flex-pack: space-around;
-      -webkit-justify-content: space-around;
-      -moz-justify-content: space-around;
-      justify-content: space-around;
-      padding: 0 1.2%; }
+      -webkit-box-pack: space-between;
+      -ms-flex-pack: space-between;
+      -webkit-justify-content: space-between;
+      -moz-justify-content: space-between;
+      justify-content: space-between;
+      padding: 0.4% 0.8%;
+      min-height: 32px; }
       .wb-pane > .header > .description > .title {
         color: #2980b9; }
       .wb-pane > .header > .description > .subtitle {
@@ -189,14 +198,14 @@ body {
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       text-shadow: rgba(0, 0, 0, 0.4) 0px 1px;
-      border-radius: 4px;
+      border-radius: 8%;
       padding: 0;
-      margin: 0 0 0 1.2%;
-      color: white;
-      font-weight: 200;
       border: 0;
+      margin: 0 0 0 0.8%;
+      color: white;
       background-color: #3498db;
-      box-shadow: inset 0 -4px rgba(0, 0, 0, 0.2); }
+      box-shadow: inset 0 -4px rgba(0, 0, 0, 0.2);
+      cursor: pointer; }
       .wb-pane > .header > .button.red {
         background-color: #e74c3c; }
       .wb-pane > .header > .button.green {
@@ -266,9 +275,17 @@ body {
     top: 0px;
     left: 0px;
     right: 0;
+    pointer-events: none;
+    -webkit-box-pack: space-around;
+    -ms-flex-pack: space-around;
     -webkit-justify-content: space-around;
+    -moz-justify-content: space-around;
+    justify-content: space-around;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     -webkit-align-items: flex-start;
-    pointer-events: none; }
+    -moz-align-items: flex-start;
+    align-items: flex-start; }
   .canvas-container > .canvas {
     position: absolute;
     top: 0px;
@@ -277,8 +294,16 @@ body {
 
 .pen-options {
   pointer-events: all;
-  -webkit-justify-content: space-around;
-  -webkit-align-items: flex-start; }
+  -webkit-box-pack: space-between;
+  -ms-flex-pack: space-between;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  -moz-align-items: flex-start;
+  align-items: flex-start; }
 
 .pen-option {
   width: 50px;

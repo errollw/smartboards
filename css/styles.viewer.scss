@@ -1,6 +1,7 @@
 @import 'bourbon/bourbon';
 @import "flexbox";
 @import "colors";
+@import "stripes";
 
 // ----- Variable Definitions -----
 
@@ -11,11 +12,12 @@ $font-normal: 'Source Sans Pro', sans-serif;
 $font-mono: 'PT Mono', sans-serif;
 
 $wb-border: 6px;
+$padding-lrg: 10px;
 
 $page-width: 1400px;
 
-$anim-s: 1s;
-$anim-ease: $ease-out-expo;
+$break-small: 460px;
+$break-large: 1200px;
 
 // ----- Flexbox Types -----
 
@@ -104,6 +106,7 @@ input {
 #center-col {
 	@include flex(1, 0, auto); // This item grows
 
+	// Default behaviour: space-between
 	@include flexbox;
     @include flex-dir(row);
     @include align-items(stretch);
@@ -112,32 +115,72 @@ input {
     // Fill screen, but leave margins on either size in two-col mode
 	margin: 0px 5%;
     width: 90%;
+    height:100%;
 	max-width: $page-width;
+
+	@media screen and (max-width: $break-small) {
+	    margin: 0;
+    	width: 100%;
+	}
+}
+
+.title-row {
+	@include flexbox;
+    @include flex-dir(row);
+    @include align-items(center);
+    @include justify-content(flex-start);
+
+	@include size(auto 40);
+	@media screen and (max-width: $break-small) {@include size(auto 44);}
+
+	padding: 0 $wb-border 0 10px;
+
+	overflow: hidden;
+	white-space: nowrap;
+
+    > .mono { font-size: 12px; color: lighten($PETER-RIVER,20%); }
+    > .title {@include flex(1, 1, 1px); font-size: 18px; color: white;}
+	
+	> button {
+		@include size(28 28);
+		@media screen and (max-width: $break-small) {@include size(32 32);}
+
+		background-color: transparent;
+		-webkit-font-smoothing: antialiased;
+		text-shadow: 0 1px rgba(0,0,0,0.2);
+
+		&:hover{background-color: transparentize(#000, 0.8)}
+	}
 }
 
 #list-container {
 	@include flex(1, 1, 1px); // This item grows and shrinks
 	background-color: $CLOUDS;
 	max-width: 30%;
+	height: 100%;
+	overflow: hidden;
 
-	> .title {
+	@media screen and (max-width: $break-small) {
+	    max-width: 100%;
+	}
 
+	> .title-row {
+		@include flex(0, 0, auto);
 		background-color: $MIDNIGHT-BLUE;
-		@include size(auto 18);
-		padding: 10px;
-		font-size: 18px;
-		color: white;
+	}
 
-		overflow: hidden;
-    	white-space: nowrap;
+	> .stripes {
+		@include flex(0, 0, auto);
+		@include size(1024px 4px);
+	    @include stripes($stripe-colors, to right);
 	}
 
 	> .controls {
-
 		@include flexbox;
 	    @include flex-dir(row);
 	    @include align-items(center);
 	    @include justify-content(stretch);
+	    @include flex(0, 0, auto);
 
 		padding: $wb-border;
 
@@ -157,6 +200,8 @@ input {
 		color: $MIDNIGHT-BLUE;
 		font-size: 14px;
 	}
+
+	ul {@include flex(1, 1, auto); overflow: auto}
 
 	li {
 		@include flexbox;
@@ -192,7 +237,7 @@ input {
 			@include flex(1, 2, auto); // This item grows and shrinks
 			@include align-self(stretch);
 			@include justify-content(space-between);
-
+			min-width: 50%;
 			overflow: hidden;
 			white-space: nowrap;
 
@@ -230,41 +275,22 @@ input {
 
 #settings-container {
 	@include flex(2, 1, 1px); // This item grows and shrinks
-	display: none;
+	height: 100%;	
+	overflow: hidden;
 
 	background-color: lighten($WET-ASPHALT,2%);
 
 	max-width: 30%;
-	margin: 0 2% 0 10px;
+	margin: 0 2% 0 $padding-lrg;
 
-	> .title-row {
-		@include flexbox;
-	    @include flex-dir(row);
-	    @include align-items(center);
-	    @include justify-content(space-between);
-
-		@include size(auto 38);
-		padding: 0 $wb-border 0 10px;
-
-	    background-color: $PETER-RIVER;
-
-		overflow: hidden;
-    	white-space: nowrap;
-
-	    > .mono { font-size: 12px; color: lighten($PETER-RIVER,20%); }
-	    > .title { @include flex(1, 1, auto); font-size: 18px; color: white; }
-		
-		> button {
-			@include size(28 28);
-			background-color: transparent;
-			-webkit-font-smoothing: antialiased;
-			text-shadow: 0 1px rgba(0,0,0,0.2);
-
-			&:hover{background-color: $BELIZE-HOLE}
-		}
+	@media screen and (max-width: $break-small) {
+	    max-width: 100%;
+	    margin: 0 0 0 $padding-lrg;
 	}
 
-	> .subtitle {
+	> .title-row { background-color: $PETER-RIVER; }
+
+	.subtitle {
 		background-color: $MIDNIGHT-BLUE;
 		padding: $wb-border;
 		color: lighten($WET-ASPHALT,30%);
@@ -274,7 +300,9 @@ input {
 		span {font-size: 12px; font-family: $font-mono}
 	}
 
-	> #settings-add-user{
+	> .settings-list{ @include flex(1, 0, 1px); overflow: auto; }
+
+	#settings-add-user{
 		margin-top: 10px;
 		padding: $wb-border;
 		text-align: center;
@@ -377,12 +405,15 @@ input {
 }
 
 #wb-container {
-
+    @include flexbox;
+    @include flex-dir(column);
+    @include align-items(stretch);
+    @include justify-content(flex-start);
 	background: white;
 
     .wb-pane {
 
-        @include flex(1, 0, auto); // This item grows
+        @include flex(1, 0, 1px); // This item grows
 
         .wb-header {
 
@@ -393,7 +424,7 @@ input {
 			background-color: $CLOUDS;
 			box-shadow: 0 2px lighten($WET-ASPHALT, 50%);
 
-			padding: $wb-border;
+			padding: 0.6%;
 
 			z-index: 1000;
 
@@ -416,11 +447,16 @@ input {
 				.title { color: $BELIZE-HOLE; }
 				.subtitle { color: $ASBESTOS; }
 			}
+
+			button {
+				@include size(28 28);
+				@include align-self(flex-start);
+			}
         }
 
 		.wb-content {
 
-			@include flex(1, 0, 0); // This item grows
+			@include flex(1, 0, 1px); // This item grows
 
 			background-size: 100% auto;	// Scale SVG to fill width, but retain aspect ratio
 			background-position: left top;

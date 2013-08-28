@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def indent(elem, level=0):
     i = "\n" + level*"  "
     if len(elem):

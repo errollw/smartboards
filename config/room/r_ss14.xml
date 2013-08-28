@@ -1,11 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <room id="r_ss14">
   <name>SS14</name>
-  <last-mod>1376930683975</last-mod>
-  <tags>
-    <tag>tag_a</tag>
-    <tag>tag_b</tag>
-  </tags>
+  <last-mod>1377608296874</last-mod>
+  <tags />
   <users>
     <user id="pr10">
       <name>Peter Robinson</name>
