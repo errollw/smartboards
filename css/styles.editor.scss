@@ -1,6 +1,7 @@
 @import 'bourbon/bourbon';
 @import "flexbox";
 @import "colors";
+@import "canvas";
 
 // ----- Variable Definitions -----
 
@@ -8,7 +9,10 @@ $font-normal: 'Source Sans Pro', sans-serif;
 $font-mono: 'PT Mono', sans-serif;
 
 $wb-border: 0.8%;
+$mobile-padding: 3px;
 $rounded-radius: 8%;
+
+$break-small: 460px;
 
 // ----- Flexbox Types -----
 
@@ -35,7 +39,7 @@ html {
 
 body {
     @include size(100% 100%);
-	overflow: hidden;
+	overflow: auto;
 
 	@include flexbox;
     @include flex-dir(row);
@@ -52,6 +56,7 @@ body {
     color: $MIDNIGHT-BLUE;
 }
 
+// Single column extending centrally down
 #center-col{
 	@include flexbox;
     @include flex-dir(column);
@@ -64,12 +69,11 @@ body {
 
     @include flex(1, 0, 1px);      		// This grows
     background-color: white;
-
-	&.faded{ background-color: darken($SILVER, 10%)}
+    overflow: hidden;
 
 	> .divider {
 		@include flex(0, 0, auto); 		// This does not grow or shrink
-		min-height: 2px;
+		min-height: 1px;
 		background-color: lighten($WET-ASPHALT, 50%);
 	}
 
@@ -87,28 +91,46 @@ body {
 		padding: $wb-border;
 		z-index: 1000;
 
+		overflow-x: hidden;
+
+		@media screen and (max-width: $break-small) {
+			padding: $mobile-padding;
+		}
+
 		> .profile-pic {
+			@include flex(0, 0, auto);              // This neither shrinks or grows
 			border-radius: $rounded-radius;
 			background-color: darken($CLOUDS,5);
 			background-size: cover, cover;
+			@media screen and (max-width: $break-small) { border-radius: 2px; }
 		}
 
 		> .description {
-			@include flex(1, 0, auto); 				// This item grows
-			@include flexbox;						// Description contains text rows
+			@include flex(1, 1, auto); 				// This item grows and shrinks
+			@include flexbox;						
 			@include flex-dir(column);
 			@include justify-content(space-between);
+			@include align-items(stretch);
+			white-space: nowrap;
+			overflow: hidden;
 
 			padding: $wb-border/2 $wb-border;
-			min-height: 32px;
 
-			> .title { color: $BELIZE-HOLE; }
+			// For mobile, display in a row
+			@media screen and (max-width: $break-small) {
+				@include flex-dir(row);
+				@include justify-content(flex-start);
+				@include align-items(center);
+				padding: 0 $mobile-padding;
+			}
+
+			> .title { @include flex(0, 0, auto); color: $BELIZE-HOLE; padding-right: $mobile-padding;}
 			> .subtitle { color: $CONCRETE; }
 		}
 
-		> .button {
+		> button {
 			
-			@include flex(0, 0, auto);              // This item grows
+			@include flex(0, 0, auto);              // This neither shrinks or grows
 			@include box-sizing(border-box);
 
 			text-shadow: rgba(0,0,0,0.4) 0px 1px;
@@ -117,12 +139,8 @@ body {
 			border: 0;
 			margin: 0 0 0 $wb-border;
 			color: white;
-			background-color: $PETER-RIVER;
-			box-shadow: inset 0 -4px rgba(0,0,0,0.2);
+			box-shadow: inset 0 -2px rgba(0,0,0,0.2);
 			cursor: pointer;
-
-			&.red { background-color: $ALIZARIN; }
-			&.green { background-color: $EMERALD }
 		}
 	}
 
@@ -133,7 +151,6 @@ body {
 		@include flexbox;
 		@include flex-dir(column);
 		@include align-items(stretch);
-		@include justify-content(flex-start);
 
 		position: relative;
 		overflow: hidden;
@@ -150,85 +167,79 @@ body {
 	}
 }
 
-/*--- Styles for drawing and writing with HTML5 canvas ---*/
+.overlay {
+	position: absolute;
+	top: 0; left: 0;
+	@include size(2000 2000);
 
-
-.canvas-container {
-
-	@include flex(1, 0, auto); // This item grows
-
-	height: 0px;
-
-    margin: 3%;
-
-    position: relative;
-
-    border-radius: 1em;
-
-    background: #FFF;
-    @include box-sizing(border-box);
-
-    > .header {
-        position: absolute; top:0px; left:0px; right: 0;
-        pointer-events: none;
-        @include justify-content(space-around);
-        @include align-items(flex-start);
-    }
-
-    > .canvas {
-        position: absolute; top:0px; left:0px;
-        border-radius: 16px;
-    }
+	background-color: transparentize($MIDNIGHT-BLUE,0.4);
 }
 
-.pen-options {
-	pointer-events:all;
-    @include justify-content(space-between);
-    @include align-items(flex-start);
-}
+.input_row {
+	@include flexbox;
+	@include flex-dir(row);
+	@include align-items(stretch);
 
-.pen-option {
-	width:      50px;
-    height:     50px;
+	@include box-sizing(border-box);
 
-    background: white;
+	margin: 2%;
+	padding: 1%;
+	border-radius: 4px;
+	background-color: white;
 
-    border:     2px solid $CLOUDS;
-    @include box-sizing(border-box);
-	margin:     0 0 0 -2px;
+	box-shadow: 0px 2px 0 2px rgba(0,0,0,0.4);
 
-	&:hover { height: 3.5em;}
+	z-index: 2000;
 
-	&.toggled { height: 4.5em; }
+	@media screen and (max-width: $break-small) {
+		border-radius: 0;
+		margin: 2% 0px;
+	}
 
-	&.color {
-        border: 0; margin: 0;
-        box-shadow: inset 0 0 0 3px rgba(0,0,0,0.2);
-    }
+	button {
+		@include size(32 32);
+		margin: 0 0 0 0.5%;
+		background-color: transparent;
+		border: none;
+		color: $SILVER;
+		border-radius: 2px;
 
-	&.pen-size {
-        position: relative;
-
-		> .pen-size-dot {
-            position: absolute;
-            border-radius: 100%;
-
-            box-shadow: inset 0px -2px 0 2px rgba(0,0,0,0.2);
-        }
-    }
-
-	&.eraser {
-        background-image:       url("../assets/icons/icon_eraser.svg");
-        background-size:        contain;
-        background-position:    center bottom;
-        background-repeat:      no-repeat;
-    }
+		&:hover{
+			background-color: $CLOUDS;
+			color: darken($SILVER, 10);
+		}
+	}
 }
 
 .movable {
     position: absolute;
-	border: 2px solid $PETER-RIVER;
-	background-size: contain;
+	border: 2px dotted $BELIZE-HOLE;
+	background-size: cover;
     background-position: center center;
 	background-repeat: no-repeat;
+
+	.control-point {
+		border: 2px solid $BELIZE-HOLE;
+		position: absolute;
+
+		background-color: white;
+		@include box-sizing(border-box);
+		@include size(8 8);
+		margin: -5px;
+	}
+}
+
+// Input only used for text / image URL input
+input {
+	@include flex(1, 0, auto); // This item grows
+	padding: 4px;
+	margin: 0px;
+	font-size: 100%;
+	border: 0px solid $SILVER;
+	border-radius: 2px;
+
+	&:focus { outline: none; }
+
+	// Smaller text for phones
+	@media screen and (max-width: $break-small) { font-size: 90%; }
 }

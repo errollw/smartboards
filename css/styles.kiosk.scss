@@ -1,0 +1,201 @@
+@import 'bourbon/bourbon';
+@import "flexbox";
+@import "colors";
+@import "canvas";
+
+// ----- Variable Definitions -----
+
+$font-normal: 'Source Sans Pro', sans-serif;
+$font-mono: 'PT Mono', sans-serif;
+
+$wb-border: 7px;
+$rounded-radius: 6px;
+$small-txt: 22px;
+$large-txt: 26px;
+
+$header-size: 64px;
+$button-size: 64px;
+$divider-size: 2px;
+
+
+// ----- Flexbox Types -----
+
+.flex-col {
+    @include flexbox;
+    @include flex-dir(column);
+    @include align-items(stretch);
+    @include justify-content(flex-start);
+}
+
+.flex-row {
+    @include flexbox;
+    @include flex-dir(row);
+	@include align-items(center);
+    @include justify-content(center);
+}
+
+// ----- Global Attributes -----
+
+html {
+   height: 100%;
+   overflow: hidden;
+}
+
+body {
+    @include size(100% 100%);
+	overflow: hidden;
+
+	background-color: black;
+
+    // General font settings
+    font: {
+        family: $font-normal;
+        size: 14px;
+        weight: 400;  }
+    color: $MIDNIGHT-BLUE;
+}
+
+// Single column extending centrally down
+#center-col{
+	@include size(100% 100%);
+	@include flexbox;
+    @include flex-dir(column);
+    @include align-items(stretch);
+    @include justify-content(stretch);
+}
+
+// (Each board may have several whiteboard panes)
+.wb-pane {
+
+    @include flex(1, 0, 1px);      		// This grows
+    background-color: white;
+    overflow: hidden;
+
+	> .divider {
+		@include flex(0, 0, auto); 		// This does not grow or shrink
+		height: $divider-size;
+		background-color: lighten($WET-ASPHALT, 50%);
+	}
+
+	//--- WHITEBOARD HEADER ---
+
+	> .header {
+		@include flex(0, 0, auto); 		// This does not grow or shrink
+
+		@include size(auto $header-size);
+
+		background-color:   $CLOUDS;
+		font-family:        $font-normal;
+		padding: $wb-border;
+		z-index: 1000;
+
+		overflow: hidden;
+
+		> .profile-pic {
+			display: inline-block;
+			float: left;
+			@include size($button-size $button-size);
+			
+			border-radius: $rounded-radius;
+			background-color: darken($CLOUDS,5);
+			background-size: cover, cover;
+		}
+
+		> .description {
+			display: inline-block;
+			float: left;
+			overflow: hidden;
+			margin: $wb-border/2 $wb-border;
+
+			> .title {
+				font-size: $large-txt;
+				margin-bottom: $wb-border;
+				color: $BELIZE-HOLE;
+			}
+
+			> .subtitle { 
+				font-size: $small-txt;
+				color: $CONCRETE;
+			}
+		}
+
+		> button {
+
+			display: inline-block;
+			float: right;
+			@include size($button-size $button-size);
+
+			@include box-sizing(border-box);
+
+			text-shadow: rgba(0,0,0,0.4) 0px 1px;
+			border-radius: $rounded-radius;
+			padding: 0;
+			border: 0;
+			margin: 0 0 0 $wb-border;
+			color: white;
+			font-size: $small-txt;
+			box-shadow: inset 0 -2px rgba(0,0,0,0.2);
+			cursor: pointer;
+		}
+	}
+
+	/*--- WHITEBOARD CONTENT ---*/
+
+	> .wb-content {
+		@include flex(1, 0, auto); // This item grows
+		@include flexbox;
+		@include flex-dir(column);
+		@include align-items(stretch);
+
+		position: relative;
+		overflow: hidden;
+
+		.svg-holder {
+			position: absolute; top: 0px; left: 0px;
+			width: 100px; height: 100px;
+			pointer-events: none;}								// Allows interaction with iframe underneath
+
+		.iframe-holder {
+			position: absolute; top: 0px; left: 0px;
+			.tarp { position: absolute; top: 0px; left: 0px; }	// Covers iframe to help dragging
+		}
+	}
+}
+
+.overlay {
+	position: absolute;
+	top: 0; left: 0;
+	@include size(2000 2000);
+
+	background-color: transparentize($MIDNIGHT-BLUE,0.4);
+}
+
+.movable {
+    position: absolute;
+	border: 2px dotted $BELIZE-HOLE;
+	background-size: cover;
+    background-position: center center;
+	background-repeat: no-repeat;
+
+	.control-point {
+		border: 2px solid $BELIZE-HOLE;
+		position: absolute;
+
+		background-color: white;
+		@include box-sizing(border-box);
+		@include size(8 8);
+		margin: -5px;
+	}
+}
+
+// Input only used for text / image URL input
+input {
+	@include flex(1, 0, auto); // This item grows
+	padding: 4px;
+	margin: 0px;
+	font-size: 100%;
+	border: 0px solid $SILVER;
+	border-radius: 2px;
+
+	&:focus { outline: none; }
+}

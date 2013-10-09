@@ -43,6 +43,10 @@ html {
 }
 
 body {
+	@include flexbox;
+    @include flex-dir(row);
+	@include align-items(center);
+    @include justify-content(center);
     @include size(100% 100%);
     
 	background: $page-bg;
@@ -68,14 +72,6 @@ button {
 	white-space: nowrap;
 
 	cursor: pointer;
-
-	&.green  { background-color: $EMERALD }
-	&.orange { background-color: $CARROT }
-	&.red    { background-color: $ALIZARIN }
-	&.blue   { background-color: $PETER-RIVER }
-	&.teal   { background-color: $TURQUOISE }
-	&.purple { background-color: $AMETHYST }
-	&.yellow { background-color: $SUN-FLOWER }
 
 	&.menu-bar{
 		box-shadow: none;
@@ -274,7 +270,7 @@ input {
 }
 
 #settings-container {
-	@include flex(2, 1, 1px); // This item grows and shrinks
+	@include flex(3, 1, 1px); // This item grows and shrinks
 	height: 100%;	
 	overflow: hidden;
 
@@ -285,7 +281,8 @@ input {
 
 	@media screen and (max-width: $break-small) {
 	    max-width: 100%;
-	    margin: 0 0 0 $padding-lrg;
+	    margin: 0;
+	    box-shadow: -2px 0 0 3px transparentize(black, 0.6);
 	}
 
 	> .title-row { background-color: $PETER-RIVER; }
@@ -405,11 +402,22 @@ input {
 }
 
 #wb-container {
-    @include flexbox;
-    @include flex-dir(column);
-    @include align-items(stretch);
-    @include justify-content(flex-start);
-	background: white;
+    
+    > .title-row {
+    	background-color: $BELIZE-HOLE;
+    	@include size(auto 0);
+
+    	// Hide when small
+		@media screen and (max-width: $break-small) {@include size(auto 44);}
+    }
+
+	#panes-container {
+		@include flexbox;
+	    @include flex-dir(column);
+	    @include align-items(stretch);
+	    @include justify-content(flex-start);
+		background: white;
+	}
 
     .wb-pane {
 

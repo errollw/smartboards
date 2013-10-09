@@ -3,6 +3,106 @@ body {
   font-size: 30em;
   font-weight: bold; }
 
+.green {
+  background-color: #2ecc71; }
+
+.orange {
+  background-color: #e67e22; }
+
+.red {
+  background-color: #e74c3c; }
+
+.blue {
+  background-color: #3498db; }
+
+.teal {
+  background-color: #1abc9c; }
+
+.purple {
+  background-color: #9b59b6; }
+
+.yellow {
+  background-color: #f1c40f; }
+
+/*--- Styles for drawing and writing with HTML5 canvas ---*/
+.canvas-container {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 1px;
+  -moz-flex: 1 0 1px;
+  -ms-flex: 1 0 1px;
+  flex: 1 0 1px;
+  margin: 3%;
+  position: relative;
+  border-radius: 1em;
+  background: #FFF;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+  .canvas-container > .header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0;
+    pointer-events: none;
+    padding: 0 10%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    -webkit-align-items: flex-start;
+    -moz-align-items: flex-start;
+    align-items: flex-start;
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between; }
+  .canvas-container > .canvas {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 16px; }
+
+.pen-options {
+  pointer-events: all; }
+
+.pen-option {
+  display: inline-block;
+  vertical-align: top;
+  background: white;
+  border: 1px solid #d4d8d8;
+  border-top: 0px;
+  margin: 0 0 0 -1px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer; }
+  .pen-option.toggled {
+    height: 4.5em; }
+  .pen-option.color {
+    border: 0;
+    margin: 0;
+    box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.2); }
+  .pen-option.pen-size {
+    position: relative; }
+    .pen-option.pen-size > .pen-size-dot {
+      position: absolute;
+      border-radius: 100%;
+      box-shadow: inset 0px -2px 0 2px rgba(0, 0, 0, 0.2); }
+  .pen-option.eraser {
+    background-image: url("../assets/icons/icon_eraser.svg");
+    background-size: contain;
+    background-position: center bottom;
+    background-repeat: no-repeat; }
+
 .flex-col {
   display: -webkit-box;
   display: -webkit-flex;
@@ -56,7 +156,7 @@ html {
 body {
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow: auto;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
@@ -114,16 +214,15 @@ body {
   -ms-flex: 1 0 1px;
   flex: 1 0 1px;
   background-color: white;
+  overflow: hidden;
   /*--- WHITEBOARD CONTENT ---*/ }
-  .wb-pane.faded {
-    background-color: #a1aab0; }
   .wb-pane > .divider {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 auto;
     -moz-flex: 0 0 auto;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
-    min-height: 2px;
+    min-height: 1px;
     background-color: #b9c8d8; }
   .wb-pane > .header {
     -webkit-box-flex: 0;
@@ -155,17 +254,29 @@ body {
     background-color: #ecf0f1;
     font-family: "Source Sans Pro", sans-serif;
     padding: 0.8%;
-    z-index: 1000; }
+    z-index: 1000;
+    overflow-x: hidden; }
+    @media screen and (max-width: 460px) {
+      .wb-pane > .header {
+        padding: 3px; } }
     .wb-pane > .header > .profile-pic {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 auto;
+      -moz-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+      flex: 0 0 auto;
       border-radius: 8%;
       background-color: #dde4e6;
       background-size: cover, cover; }
+      @media screen and (max-width: 460px) {
+        .wb-pane > .header > .profile-pic {
+          border-radius: 2px; } }
     .wb-pane > .header > .description {
       -webkit-box-flex: 1;
-      -webkit-flex: 1 0 auto;
-      -moz-flex: 1 0 auto;
-      -ms-flex: 1 0 auto;
-      flex: 1 0 auto;
+      -webkit-flex: 1 1 auto;
+      -moz-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+      flex: 1 1 auto;
       display: -webkit-box;
       display: -webkit-flex;
       display: -moz-flex;
@@ -177,18 +288,48 @@ body {
       -moz-flex-direction: column;
       -ms-flex-direction: column;
       flex-direction: column;
-      -webkit-box-pack: space-between;
-      -ms-flex-pack: space-between;
+      -ms-flex-pack: justify;
       -webkit-justify-content: space-between;
       -moz-justify-content: space-between;
       justify-content: space-between;
-      padding: 0.4% 0.8%;
-      min-height: 32px; }
+      -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+      -webkit-align-items: stretch;
+      -moz-align-items: stretch;
+      align-items: stretch;
+      white-space: nowrap;
+      overflow: hidden;
+      padding: 0.4% 0.8%; }
+      @media screen and (max-width: 460px) {
+        .wb-pane > .header > .description {
+          -webkit-box-direction: normal;
+          -webkit-box-orient: horizontal;
+          -webkit-flex-direction: row;
+          -moz-flex-direction: row;
+          -ms-flex-direction: row;
+          flex-direction: row;
+          -webkit-box-pack: start;
+          -ms-flex-pack: start;
+          -webkit-justify-content: flex-start;
+          -moz-justify-content: flex-start;
+          justify-content: flex-start;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          -moz-align-items: center;
+          align-items: center;
+          padding: 0 3px; } }
       .wb-pane > .header > .description > .title {
-        color: #2980b9; }
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 auto;
+        -moz-flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        color: #2980b9;
+        padding-right: 3px; }
       .wb-pane > .header > .description > .subtitle {
         color: #95a5a6; }
-    .wb-pane > .header > .button {
+    .wb-pane > .header > button {
       -webkit-box-flex: 0;
       -webkit-flex: 0 0 auto;
       -moz-flex: 0 0 auto;
@@ -203,13 +344,8 @@ body {
       border: 0;
       margin: 0 0 0 0.8%;
       color: white;
-      background-color: #3498db;
-      box-shadow: inset 0 -4px rgba(0, 0, 0, 0.2);
+      box-shadow: inset 0 -2px rgba(0, 0, 0, 0.2);
       cursor: pointer; }
-      .wb-pane > .header > .button.red {
-        background-color: #e74c3c; }
-      .wb-pane > .header > .button.green {
-        background-color: #2ecc71; }
   .wb-pane > .wb-content {
     -webkit-box-flex: 1;
     -webkit-flex: 1 0 auto;
@@ -232,11 +368,6 @@ body {
     -webkit-align-items: stretch;
     -moz-align-items: stretch;
     align-items: stretch;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
-    -webkit-justify-content: flex-start;
-    -moz-justify-content: flex-start;
-    justify-content: flex-start;
     position: relative;
     overflow: hidden; }
     .wb-pane > .wb-content .svg-holder {
@@ -255,89 +386,86 @@ body {
         top: 0px;
         left: 0px; }
 
-/*--- Styles for drawing and writing with HTML5 canvas ---*/
-.canvas-container {
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2000px;
+  height: 2000px;
+  background-color: rgba(44, 62, 80, 0.6); }
+
+.input_row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  align-items: stretch;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 2%;
+  padding: 1%;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0px 2px 0 2px rgba(0, 0, 0, 0.4);
+  z-index: 2000; }
+  @media screen and (max-width: 460px) {
+    .input_row {
+      border-radius: 0;
+      margin: 2% 0px; } }
+  .input_row button {
+    width: 32px;
+    height: 32px;
+    margin: 0 0 0 0.5%;
+    background-color: transparent;
+    border: none;
+    color: #bdc3c7;
+    border-radius: 2px; }
+    .input_row button:hover {
+      background-color: #ecf0f1;
+      color: #a1aab0; }
+
+.movable {
+  position: absolute;
+  border: 2px dotted #2980b9;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat; }
+  .movable .control-point {
+    border: 2px solid #2980b9;
+    position: absolute;
+    background-color: white;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 8px;
+    height: 8px;
+    margin: -5px; }
+
+input {
   -webkit-box-flex: 1;
   -webkit-flex: 1 0 auto;
   -moz-flex: 1 0 auto;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
-  height: 0px;
-  margin: 3%;
-  position: relative;
-  border-radius: 1em;
-  background: #FFF;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
-  .canvas-container > .header {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0;
-    pointer-events: none;
-    -webkit-box-pack: space-around;
-    -ms-flex-pack: space-around;
-    -webkit-justify-content: space-around;
-    -moz-justify-content: space-around;
-    justify-content: space-around;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    -webkit-align-items: flex-start;
-    -moz-align-items: flex-start;
-    align-items: flex-start; }
-  .canvas-container > .canvas {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    border-radius: 16px; }
-
-.pen-options {
-  pointer-events: all;
-  -webkit-box-pack: space-between;
-  -ms-flex-pack: space-between;
-  -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
-  justify-content: space-between;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  -webkit-align-items: flex-start;
-  -moz-align-items: flex-start;
-  align-items: flex-start; }
-
-.pen-option {
-  width: 50px;
-  height: 50px;
-  background: white;
-  border: 2px solid #ecf0f1;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  margin: 0 0 0 -2px; }
-  .pen-option:hover {
-    height: 3.5em; }
-  .pen-option.toggled {
-    height: 4.5em; }
-  .pen-option.color {
-    border: 0;
-    margin: 0;
-    box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.2); }
-  .pen-option.pen-size {
-    position: relative; }
-    .pen-option.pen-size > .pen-size-dot {
-      position: absolute;
-      border-radius: 100%;
-      box-shadow: inset 0px -2px 0 2px rgba(0, 0, 0, 0.2); }
-  .pen-option.eraser {
-    background-image: url("../assets/icons/icon_eraser.svg");
-    background-size: contain;
-    background-position: center bottom;
-    background-repeat: no-repeat; }
-
-.movable {
-  position: absolute;
-  border: 2px solid #3498db;
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat; }
-
+  padding: 4px;
+  margin: 0px;
+  font-size: 100%;
+  border: 0px solid #bdc3c7;
+  border-radius: 2px; }
+  input:focus {
+    outline: none; }
+  @media screen and (max-width: 460px) {
+    input {
+      font-size: 90%; } }

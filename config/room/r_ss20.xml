@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <room id="r_ss20">
   <name>SS20</name>
-  <last-mod>1377608317187</last-mod>
+  <last-mod>1378977175431</last-mod>
   <tags>
     <tag>UROP Room</tag>
     <tag>whiteboards</tag>
@@ -10,10 +10,6 @@
     <user id="u_eww23">
       <name>Erroll Wood</name>
       <status>UROP Summer Intern</status>
-      <website>
-        <url>http://caiusmayball.com/</url>
-        <position>right</position>
-      </website>
     </user>
     <user id="u_li222">
       <name>Leonardo L. Impett</name>
