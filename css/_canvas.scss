@@ -2,12 +2,10 @@
 
 .canvas-container {
 
-	@include flex(1, 0, 1px); // This item grows
     margin: 3%;
     position: relative;
     border-radius: 1em;
     background: #FFF;
-    @include box-sizing(border-box);
 
     > .header {
         position: absolute; top:0px; left:0px; right: 0;
@@ -29,7 +27,6 @@
 .pen-options {
 	//@include flex(1, 0, 1px); // This item grows
 	pointer-events: all;
-	
 }
 
 .pen-option {

@@ -218,6 +218,11 @@ body {
     background-position: center center;
 	background-repeat: no-repeat;
 
+	img {
+		width: 100%;
+		pointer-events: none;
+	}
+
 	.control-point {
 		border: 2px solid $BELIZE-HOLE;
 		position: absolute;

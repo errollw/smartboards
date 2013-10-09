@@ -26,18 +26,10 @@ body {
 
 /*--- Styles for drawing and writing with HTML5 canvas ---*/
 .canvas-container {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 0 1px;
-  -moz-flex: 1 0 1px;
-  -ms-flex: 1 0 1px;
-  flex: 1 0 1px;
   margin: 3%;
   position: relative;
   border-radius: 1em;
-  background: #FFF;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+  background: #FFF; }
   .canvas-container > .header {
     position: absolute;
     top: 0px;
@@ -442,6 +434,9 @@ body {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat; }
+  .movable img {
+    width: 100%;
+    pointer-events: none; }
   .movable .control-point {
     border: 2px solid #2980b9;
     position: absolute;
