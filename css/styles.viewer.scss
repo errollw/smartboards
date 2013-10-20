@@ -11,7 +11,11 @@ $header-bg: $CLOUDS;
 $font-normal: 'Source Sans Pro', sans-serif;
 $font-mono: 'PT Mono', sans-serif;
 
-$wb-border: 6px;
+$viewer-padding: 6px;
+
+$wb-border: 0.8%;
+$mobile-padding: 3px;
+$rounded-radius: 8%;
 $padding-lrg: 10px;
 
 $page-width: 1400px;
@@ -39,17 +43,21 @@ $break-large: 1200px;
 
 html {
    height: 100%;
-   overflow: hidden;
+   //overflow: hidden;
 }
 
 body {
 	@include flexbox;
     @include flex-dir(row);
-	@include align-items(center);
-    @include justify-content(center);
+	@include align-items(space-between);
+    @include justify-content(space-between);
     @include size(100% 100%);
+
+    margin: auto;
+    max-width: 1400px;
     
 	background: $page-bg;
+	overflow: hidden;
 
     // General font settings
     font: { family: $font-normal;
@@ -109,14 +117,15 @@ input {
     @include justify-content(space-between);
 
     // Fill screen, but leave margins on either size in two-col mode
-	margin: 0px 5%;
+	margin: 0px 2%;
     width: 90%;
     height:100%;
 	max-width: $page-width;
 
 	@media screen and (max-width: $break-small) {
+		width: 200%;
 	    margin: 0;
-    	width: 100%;
+	    max-width: auto;
 	}
 }
 
@@ -127,10 +136,13 @@ input {
     @include justify-content(flex-start);
 
 	@include size(auto 40);
-	@media screen and (max-width: $break-small) {@include size(auto 44);}
+	padding: 0 $viewer-padding 0 10px;
 
-	padding: 0 $wb-border 0 10px;
-
+	@media screen and (max-width: $break-small) {
+		@include size(auto 44);
+		padding: 0 6px 0 10px;
+	}
+	
 	overflow: hidden;
 	white-space: nowrap;
 
@@ -157,6 +169,7 @@ input {
 	overflow: hidden;
 
 	@media screen and (max-width: $break-small) {
+		@include flex(0, 0, auto);
 	    max-width: 100%;
 	}
 
@@ -178,12 +191,12 @@ input {
 	    @include justify-content(stretch);
 	    @include flex(0, 0, auto);
 
-		padding: $wb-border;
+		padding: $viewer-padding;
 
 		button.settings {
 			@include size(auto 32);
-			padding: 0 $wb-border;
-			margin-right: $wb-border;
+			padding: 0 $viewer-padding;
+			margin-right: $viewer-padding;
 			font-size: 14px;
 		}
 	}
@@ -207,8 +220,8 @@ input {
 
 		background-color: white;
 
-		padding: $wb-border;
-		margin-bottom: $wb-border;
+		padding: $viewer-padding;
+		margin-bottom: $viewer-padding;
 
 		overflow: hidden;
 		white-space: nowrap;
@@ -264,7 +277,7 @@ input {
 			background-size: cover, cover;
 			background-color: $CLOUDS;
 
-			margin: 0 0 0 $wb-border;
+			margin: 0 0 0 $viewer-padding;
         }
 	}
 }
@@ -277,21 +290,26 @@ input {
 	background-color: lighten($WET-ASPHALT,2%);
 
 	max-width: 30%;
-	margin: 0 2% 0 $padding-lrg;
+	margin: 0;
 
 	@media screen and (max-width: $break-small) {
+		@include flex(0, 0, auto);
+		margin: 0;
 	    max-width: 100%;
-	    margin: 0;
-	    box-shadow: -2px 0 0 3px transparentize(black, 0.6);
 	}
 
-	> .title-row { background-color: $PETER-RIVER; }
+	> .title-row {
+		background-color: $PETER-RIVER;
+		@media screen and (max-width: $break-small) {
+			padding: 0px $viewer-padding;
+			p { text-align: center; }
+		}
+	}
 
 	.subtitle {
 		background-color: $MIDNIGHT-BLUE;
-		padding: $wb-border;
+		padding: $viewer-padding;
 		color: lighten($WET-ASPHALT,30%);
-		margin-bottom: 10px;
 		font-size: 13px;
 
 		span {font-size: 12px; font-family: $font-mono}
@@ -301,7 +319,7 @@ input {
 
 	#settings-add-user{
 		margin-top: 10px;
-		padding: $wb-border;
+		padding: $viewer-padding;
 		text-align: center;
 		color: lighten($WET-ASPHALT,30%);
 		font-size: 14px;
@@ -325,14 +343,14 @@ input {
 
 		line-height: 100%;
 
-		margin: $wb-border $wb-border 0;
+		margin: $viewer-padding $viewer-padding 0;
 
 		p { width: 35%; }
 
 		input {
 			@include box-sizing (border-box);
 			height: 30px;
-			padding: 4px $wb-border;
+			padding: 4px $viewer-padding;
 			background-color: lighten($WET-ASPHALT,30%);
 			border: 0; border-radius: 2px;
 			color: $MIDNIGHT-BLUE;
@@ -345,7 +363,7 @@ input {
 		button {
 			@include size(30 30);
 			border-radius: 2px;
-			margin-left: $wb-border;
+			margin-left: $viewer-padding;
 			font-size: 14px;
 			text-shadow: 0 1px rgba(0,0,0,0.2);
 
@@ -358,7 +376,7 @@ input {
 				@include size(auto 30);
 				@include flex(1, 1, 1px);
 				font-size: 13px;
-				margin: 0 $wb-border 0 0;
+				margin: 0 $viewer-padding 0 0;
 				background-color: lighten($WET-ASPHALT,10%);
 				color: $MIDNIGHT-BLUE;
 
@@ -378,7 +396,7 @@ input {
 		margin: 10px 0 0;
 		padding: 10px 0;
 
-		.setting:first-child {margin: 0 $wb-border;}
+		.setting:first-child {margin: 0 $viewer-padding;}
 	}
 
 	.controls {
@@ -387,12 +405,12 @@ input {
 	    @include align-items(center);
 	    @include justify-content(stretch);
 
-	    margin: 10px $wb-border;
+	    margin: 10px $viewer-padding;
 
 		button {
 			@include flex(1, 0, 1px); // This item grows
 			height: 32px;
-			margin-left: $wb-border;
+			margin-left: $viewer-padding;
 			font-size: 14px;
 			font-weight: 400;
 
@@ -403,12 +421,26 @@ input {
 
 #wb-container {
     
+	height: 100%;
+	background: $CLOUDS;
+	overflow: auto;
+
+	@media screen and (max-width: $break-small) {
+		@include flex(0, 0, auto);
+	    max-width: 100%;
+	}
+
     > .title-row {
     	background-color: $BELIZE-HOLE;
     	@include size(auto 0);
 
+    	p {text-align: center}
+
     	// Hide when small
-		@media screen and (max-width: $break-small) {@include size(auto 44);}
+		@media screen and (max-width: $break-small) {
+			padding: 0px $viewer-padding;
+			@include size(auto 44);
+		}
     }
 
 	#panes-container {
@@ -416,25 +448,40 @@ input {
 	    @include flex-dir(column);
 	    @include align-items(stretch);
 	    @include justify-content(flex-start);
+	    @include flex(0, 0, auto);
 		background: white;
 	}
 
     .wb-pane {
 
         @include flex(1, 0, 1px); // This item grows
+        background-color: white;
+    	overflow: hidden;
+
+    	> .divider {
+			@include flex(0, 0, auto); 		// This does not grow or shrink
+			min-height: 1px;
+			background-color: lighten($WET-ASPHALT, 50%);
+		}
 
         .wb-header {
 
+			@include flex(0, 0, auto); 		// This does not grow or shrink
+			@include flexbox;
+			@include flex-dir(row);
+			@include align-items(stretch);
 			@include justify-content(flex-start);
 
-            @include flex(0, 1, auto); // This item shrinks
-
-			background-color: $CLOUDS;
-			box-shadow: 0 2px lighten($WET-ASPHALT, 50%);
-
-			padding: 0.6%;
-
+			background-color:   $CLOUDS;
+			font-family:        $font-normal;
+			padding: $wb-border;
 			z-index: 1000;
+
+			overflow-x: hidden;
+
+			@media screen and (max-width: $break-small) {
+				padding: $mobile-padding;
+			}
 
             .profile-pic {
 
@@ -443,21 +490,33 @@ input {
 				background-size: cover, cover;
 				background-color: darken($CLOUDS, 5%);}
 
-			.description {
+			> .description {
+				@include flex(1, 1, auto); 				// This item grows and shrinks
+				@include flexbox;						
+				@include flex-dir(column);
+				@include justify-content(space-between);
+				@include align-items(stretch);
+				white-space: nowrap;
+				overflow: hidden;
 
-				@include flex(1, 0, auto);		// This item grows
+				padding: $wb-border/2 $wb-border;
 
-				@include align-self(stretch);
-				@include justify-content(space-around);
+				// For mobile, display in a row
+				@media screen and (max-width: $break-small) {
+					@include flex-dir(row);
+					@include justify-content(flex-start);
+					@include align-items(center);
+					padding: 0 $mobile-padding;
+				}
 
-				padding: 0 $wb-border;
-
-				.title { color: $BELIZE-HOLE; }
-				.subtitle { color: $ASBESTOS; }
+				> .title { @include flex(0, 0, auto); color: $BELIZE-HOLE; padding-right: $mobile-padding;}
+				> .subtitle { color: $CONCRETE; }
 			}
 
 			button {
-				@include size(28 28);
+				height: 100%;
+				background-color: lighten($WET-ASPHALT, 50%);
+				color: lighten($WET-ASPHALT, 30%);
 				@include align-self(flex-start);
 			}
         }
@@ -480,3 +539,13 @@ input {
     }
 }
 
+button.floater {
+	@include size(28 28);
+
+	position: absolute;
+	top: $viewer-padding;
+	right: $viewer-padding;
+
+	background-color: $SILVER;
+	color: lighten($SILVER,10%);
+}

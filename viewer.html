@@ -18,6 +18,7 @@
         <script type='text/javascript' src='lib/jquery-1.10.2.min.js'></script>
         <script type='text/javascript' src='lib/jquery.svg.browser.shim.js'></script>
         <script type='text/javascript' src='lib/jquery.svg.min.js'></script>
+        <script type='text/javascript' src='lib/jquery.scrollTo-min.js'></script>
         <script type='text/javascript' src='lib/wb.utils.js'></script>
         <script type='text/javascript' src='lib/wb.iframe.js'></script>
         <script type='text/javascript' src='lib/wb.viewer.settings.js'></script>
@@ -28,59 +29,60 @@
 
     <body>
 
-        <div id="center-col">
+        <!--List of all rooms-->
+        <div id="list-container" class="flex-col">
 
-            <!--List of all rooms-->
-            <div id="list-container" class="flex-col">
+            <div class="title-row">
+                <p class="title">Rainbow Group Whiteboards</p>
+                <button class="menu-bar show-info"> <i class="icon-info-sign"></i> </button>
+            </div>
 
-                <div class="title-row">
-                    <p class="title">Rainbow Group Whiteboards</p>
-                    <button class="menu-bar show-settings"> <i class="icon-gears"></i> </button>
-                </div>
-
-                <div class="stripes"></div>
+            <div class="stripes"></div>
                 
-                <div class="controls">
-                    <input id="tags-field" type="text" placeholder="filter by tags">
-                </div>
-
-                <ul id="room-list"></ul>
+            <div class="controls">
+                <input id="tags-field" type="text" placeholder="filter by tags">
             </div>
 
-            <!--Settings for currently selected room-->
-            <div id="settings-container" class="flex-col" >
-
-                <div class="title-row">
-                    <p class="title"><i class="icon-gears"></i>&nbsp; Room Settings</p>
-                    <button class="menu-bar" id="settings-save"> <i class="icon-save"></i> </button>
-                    <button class="menu-bar" id="settings-cancel"> <i class="icon-remove"></i> </button>
-                </div>
-
-                <div class="subtitle"></div>
-
-                <div class="settings-list">
-                    <div class="setting"> <p>Room Name</p> <input type="text" name="r_name"> </div>
-                    <div class="setting"> <p>Tags</p> <input type="text" name="tags"> </div>
-                    <div id="settings-add-user"> <i class="icon-plus-sign-alt"></i> </div>
-                </div>
-
-                <!-- Hidden target iframe for file uploads without refresh-->
-                <iframe id="target_iframe" name="target_iframe" src="#" style="display:none"></iframe>
-                 
-            </div>
+            <ul id="room-list"></ul>
+        </div>
         
-            <!--Whiteboard elements loaded here-->
-            <div id="wb-container">
+        <!--Whiteboard elements loaded here-->
+        <div id="wb-container">
 
-                <div class="title-row">
-                    <p class="title">Room Name</p>
-                </div>
-
-                <div id="panes-container"></div>
-
+            <div class="title-row">
+                <button class="menu-bar show-list"> <i class="icon-reorder"></i> </button>
+                <p class="title">Room Name</p>
+                <button class="menu-bar show-settings"> <i class="icon-gear"></i> </button>
             </div>
-           
+
+            <div id="panes-container"></div>
+
         </div>
 
+        <!--Settings for currently selected room-->
+        <div id="settings-container" class="flex-col" >
+
+            <div class="title-row">
+                <button class="menu-bar show-list"> <i class="icon-reorder"></i> </button>
+                <p class="title">Room Settings</p>
+                <button class="menu-bar" id="settings-save"> <i class="icon-save"></i> </button>
+                <button class="menu-bar desktop-only" id="settings-cancel"> <i class="icon-remove"></i> </button>
+            </div>
+
+            <div class="subtitle"></div>
+
+            <div class="settings-list">
+                <div class="setting"> <p>Room Name</p> <input type="text" name="r_name"> </div>
+                <div class="setting"> <p>Tags</p> <input type="text" name="tags"> </div>
+                <div id="settings-add-user"> <i class="icon-plus-sign-alt"></i> </div>
+            </div>
+
+            <!-- Hidden target iframe for file uploads without refresh-->
+            <iframe id="target_iframe" name="target_iframe" src="#" style="display:none"></iframe>
+                 
+        </div>
+
+        <button class="floater menu-bar show-settings desktop-only"> <i class="icon-gear"></i> </button>
+           
     </body>
 </html>

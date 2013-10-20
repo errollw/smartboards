@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <room id="r_ss20">
   <name>SS20</name>
-  <last-mod>1378977175431</last-mod>
+  <last-mod>1382273730838</last-mod>
   <tags>
     <tag>UROP Room</tag>
     <tag>whiteboards</tag>
@@ -9,7 +9,7 @@
   <users>
     <user id="u_eww23">
       <name>Erroll Wood</name>
-      <status>UROP Summer Intern</status>
+      <status>Master of whiteboards</status>
     </user>
     <user id="u_li222">
       <name>Leonardo L. Impett</name>
