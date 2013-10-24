@@ -5,24 +5,38 @@ body {
 
 .green {
   background-color: #2ecc71; }
+  .green:hover {
+    background-color: #40d47e; }
 
 .orange {
   background-color: #e67e22; }
+  .orange:hover {
+    background-color: #e98b39; }
 
 .red {
   background-color: #e74c3c; }
+  .red:hover {
+    background-color: #ea6153; }
 
 .blue {
   background-color: #3498db; }
+  .blue:hover {
+    background-color: #4aa3df; }
 
 .teal {
   background-color: #1abc9c; }
+  .teal:hover {
+    background-color: #1dd2af; }
 
 .purple {
   background-color: #9b59b6; }
+  .purple:hover {
+    background-color: #a66bbe; }
 
 .yellow {
   background-color: #f1c40f; }
+  .yellow:hover {
+    background-color: #f2ca27; }
 
 /*--- Styles for drawing and writing with HTML5 canvas ---*/
 .canvas-container {
@@ -155,28 +169,36 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  -webkit-flex-direction: row;
-  -moz-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  -webkit-align-items: stretch;
-  -moz-align-items: stretch;
-  align-items: stretch;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  -moz-justify-content: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  justify-content: flex-start;
   background-color: #bdc3c7;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1em;
   font-weight: 400;
   color: #2c3e50; }
 
-#center-col {
+button {
+  color: white;
+  font-family: "Source Sans Pro", sans-serif;
+  cursor: pointer;
+  text-shadow: rgba(0, 0, 0, 0.4) 0px 1px;
+  border-radius: 2px;
+  border: none; }
+
+#wb_container {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
@@ -330,14 +352,9 @@ body {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-      text-shadow: rgba(0, 0, 0, 0.4) 0px 1px;
       border-radius: 8%;
       padding: 0;
-      border: 0;
-      margin: 0 0 0 0.8%;
-      color: white;
-      box-shadow: inset 0 -2px rgba(0, 0, 0, 0.2);
-      cursor: pointer; }
+      margin: 0 0 0 0.8%; }
   .wb-pane > .wb-content {
     -webkit-box-flex: 1;
     -webkit-flex: 1 0 auto;
@@ -421,21 +438,22 @@ body {
     height: 32px;
     margin: 0 0 0 0.5%;
     background-color: transparent;
-    border: none;
     color: #bdc3c7;
-    border-radius: 2px; }
+    border-radius: 2px;
+    font-size: 14px; }
     .input_row button:hover {
       background-color: #ecf0f1;
       color: #a1aab0; }
 
 .movable {
-  position: absolute;
+  position: relative;
   border: 2px dotted #2980b9;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat; }
   .movable img {
     width: 100%;
+    height: 100%;
     pointer-events: none; }
   .movable .control-point {
     border: 2px solid #2980b9;
@@ -447,6 +465,11 @@ body {
     width: 8px;
     height: 8px;
     margin: -5px; }
+    @media screen and (max-width: 460px) {
+      .movable .control-point {
+        width: 12px;
+        height: 12px;
+        margin: -7px; } }
 
 input {
   -webkit-box-flex: 1;
@@ -458,9 +481,68 @@ input {
   margin: 0px;
   font-size: 100%;
   border: 0px solid #bdc3c7;
-  border-radius: 2px; }
+  border-radius: 2px;
+  color: #2980b9; }
   input:focus {
     outline: none; }
   @media screen and (max-width: 460px) {
     input {
       font-size: 90%; } }
+
+#controls {
+  position: absolute;
+  background-color: #34495e;
+  font-size: 21px;
+  color: #ecf0f1;
+  padding: 10px;
+  border-radius: 0 0 4px 4px; }
+  #controls p {
+    text-align: center;
+    margin-bottom: 8px; }
+  #controls button {
+    box-shadow: inset 0px -3px rgba(0, 0, 0, 0.4);
+    font-size: 18px;
+    padding: 8px 16px 12px 16px; }
+
+.mobile-title-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  align-items: center;
+  -webkit-align-self: stretch;
+  -moz-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  width: auto;
+  height: 44px;
+  padding: 0 6px 0 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: #46627f; }
+  .mobile-title-row > .title {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 1px;
+    -moz-flex: 1 1 1px;
+    -ms-flex: 1 1 1px;
+    flex: 1 1 1px;
+    font-size: 18px;
+    color: white; }
+  .mobile-title-row > button {
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
+    background-color: transparent; }
+    .mobile-title-row > button:hover {
+      background-color: rgba(0, 0, 0, 0.2); }

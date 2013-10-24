@@ -5,24 +5,38 @@ body {
 
 .green {
   background-color: #2ecc71; }
+  .green:hover {
+    background-color: #40d47e; }
 
 .orange {
   background-color: #e67e22; }
+  .orange:hover {
+    background-color: #e98b39; }
 
 .red {
   background-color: #e74c3c; }
+  .red:hover {
+    background-color: #ea6153; }
 
 .blue {
   background-color: #3498db; }
+  .blue:hover {
+    background-color: #4aa3df; }
 
 .teal {
   background-color: #1abc9c; }
+  .teal:hover {
+    background-color: #1dd2af; }
 
 .purple {
   background-color: #9b59b6; }
+  .purple:hover {
+    background-color: #a66bbe; }
 
 .yellow {
   background-color: #f1c40f; }
+  .yellow:hover {
+    background-color: #f2ca27; }
 
 .flex-col {
   display: -webkit-box;
@@ -71,7 +85,8 @@ body {
   justify-content: center; }
 
 html {
-  height: 100%; }
+  height: 100%;
+  overflow: hidden; }
 
 body {
   display: -webkit-box;
@@ -109,8 +124,9 @@ button {
   border: 0;
   margin: 0;
   padding: 0;
-  border-radius: 3px;
+  border-radius: 2px;
   box-shadow: inset 0 -2px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -127,15 +143,15 @@ input {
   -moz-flex: 1 0 1px;
   -ms-flex: 1 0 1px;
   flex: 1 0 1px;
-  border-radius: 4px;
-  padding: 4px 8px;
+  border-radius: 2px;
+  padding: 8px;
   margin: 0px;
+  border: 0;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 13px;
   font-weight: 400; }
   input:focus {
-    outline: 0;
-    border: 2px solid #1abc9c; }
+    outline: 0; }
 
 .mono {
   font-family: "PT Mono", sans-serif; }
@@ -169,7 +185,7 @@ input {
   margin: 0px 2%;
   width: 90%;
   height: 100%;
-  max-width: 1400px; }
+  max-width: 1440px; }
   @media screen and (max-width: 460px) {
     #center-col {
       width: 200%;
@@ -227,8 +243,8 @@ input {
     text-shadow: 0 1px rgba(0, 0, 0, 0.2); }
     @media screen and (max-width: 460px) {
       .title-row > button {
-        width: 32px;
-        height: 32px; } }
+        width: 34px;
+        height: 34px; } }
     .title-row > button:hover {
       background-color: rgba(0, 0, 0, 0.2); }
 
@@ -295,22 +311,14 @@ input {
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
     padding: 8px; }
-    #list-container > .controls button.settings {
-      width: auto;
-      height: 32px;
-      padding: 0 8px;
-      margin-right: 8px;
-      font-size: 14px; }
   #list-container input {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
     width: auto;
-    height: 32px;
-    padding: 6px;
+    height: auto;
     border: 1px solid #bdc3c7;
     color: #2c3e50;
     font-size: 14px; }
+    #list-container input:focus {
+      border: 1px solid #1abc9c; }
   #list-container ul {
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 auto;
@@ -347,6 +355,10 @@ input {
     overflow: hidden;
     white-space: nowrap;
     cursor: pointer; }
+    @media screen and (max-width: 460px) {
+      #list-container li {
+        padding: 8px;
+        margin: 0 0 8px 0; } }
     #list-container li.toggled, #list-container li:hover {
       background-color: #3498db;
       box-shadow: 0 2px #2980b9; }
@@ -411,7 +423,7 @@ input {
   flex: 3 1 1px;
   height: 100%;
   overflow: hidden;
-  background-color: #384e65;
+  background-color: #3d566e;
   max-width: 30%;
   margin: 0; }
   @media screen and (max-width: 460px) {
@@ -446,7 +458,7 @@ input {
     flex: 1 0 1px;
     overflow: auto; }
   #settings-container #settings-add-user {
-    margin-top: 10px;
+    margin: 10px 0;
     padding: 8px;
     text-align: center;
     color: #7795b4;
@@ -489,8 +501,7 @@ input {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-      height: 30px;
-      padding: 4px 8px;
+      height: 36px;
       background-color: #7795b4;
       border: 0;
       border-radius: 2px;
@@ -506,25 +517,23 @@ input {
       #settings-container .setting input.changed {
         background-color: #ecf0f1; }
     #settings-container .setting button {
-      width: 30px;
-      height: 30px;
-      border-radius: 2px;
-      margin-left: 8px;
-      font-size: 14px;
-      text-shadow: 0 1px rgba(0, 0, 0, 0.2); }
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      margin: 0 0 0 8px; }
       #settings-container .setting button.profile-pic {
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
         background-size: cover, cover;
         background-color: #dde4e6; }
       #settings-container .setting button.pos {
         width: auto;
-        height: 30px;
+        height: 36px;
         -webkit-box-flex: 1;
         -webkit-flex: 1 1 1px;
         -moz-flex: 1 1 1px;
         -ms-flex: 1 1 1px;
         flex: 1 1 1px;
-        font-size: 13px;
+        font-size: 14px;
         margin: 0 8px 0 0;
         background-color: #46627f;
         color: #2c3e50; }
@@ -541,6 +550,12 @@ input {
     padding: 10px 0; }
     #settings-container .user .setting:first-child {
       margin: 0 8px; }
+    #settings-container .user > button {
+      border-radius: 2px;
+      font-family: "Source Sans Pro", sans-serif;
+      font-size: 14;
+      padding: 8px;
+      margin: 8px 8px 0 8px; }
   #settings-container .controls {
     display: -webkit-box;
     display: -webkit-flex;
@@ -580,7 +595,7 @@ input {
 #wb-container {
   height: 100%;
   background: #ecf0f1;
-  overflow: auto; }
+  overflow: hidden; }
   @media screen and (max-width: 460px) {
     #wb-container {
       -webkit-box-flex: 0;
@@ -588,7 +603,8 @@ input {
       -moz-flex: 0 0 auto;
       -ms-flex: 0 0 auto;
       flex: 0 0 auto;
-      max-width: 100%; } }
+      max-width: 100%;
+      overflow: auto; } }
   #wb-container > .title-row {
     background-color: #2980b9;
     width: auto;
