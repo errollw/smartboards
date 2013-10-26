@@ -17,8 +17,6 @@
  
         <!-- Javascript Libs -->
         <script type='text/javascript' src='lib/jquery-1.10.2.min.js'></script>
-        <script type='text/javascript' src='lib/jquery.svg.browser.shim.js'></script>
-        <script type='text/javascript' src='lib/jquery.svg.min.js'></script>
         <script type='text/javascript' src='lib/jquery.qrcode.min.js'></script>
 
         <!-- General Whiteboard libs -->
@@ -37,7 +35,15 @@
     </head>
 
     <body>
-        <div id="center-col"></div>
+        <div id="controls" class="desktop-only">
+            <p class="title page-title">Room Name</p>
+            <button class="blue view-all-rooms"> <i class="icon-reorder"></i>&nbsp; View all rooms </button>
+        </div>
+        <div class="mobile-title-row mobile-only">
+            <p class="title page-title">Room Name</p>
+            <button class="view-all-rooms"> <i class="icon-reorder"></i> </button>
+        </div>
+        <div id="wb_container"></div>
     </body>
 
 </html>

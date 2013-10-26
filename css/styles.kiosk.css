@@ -5,24 +5,38 @@ body {
 
 .green {
   background-color: #2ecc71; }
+  .green:hover {
+    background-color: #40d47e; }
 
 .orange {
   background-color: #e67e22; }
+  .orange:hover {
+    background-color: #e98b39; }
 
 .red {
   background-color: #e74c3c; }
+  .red:hover {
+    background-color: #ea6153; }
 
 .blue {
   background-color: #3498db; }
+  .blue:hover {
+    background-color: #4aa3df; }
 
 .teal {
   background-color: #1abc9c; }
+  .teal:hover {
+    background-color: #1dd2af; }
 
 .purple {
   background-color: #9b59b6; }
+  .purple:hover {
+    background-color: #a66bbe; }
 
 .yellow {
   background-color: #f1c40f; }
+  .yellow:hover {
+    background-color: #f2ca27; }
 
 /*--- Styles for drawing and writing with HTML5 canvas ---*/
 .canvas-container {
@@ -308,9 +322,9 @@ body {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    width: 8px;
-    height: 8px;
-    margin: -5px; }
+    width: 20px;
+    height: 20px;
+    margin: -11px; }
 
 input {
   -webkit-box-flex: 1;

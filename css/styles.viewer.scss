@@ -170,12 +170,14 @@ input {
 
 	> .title-row {
 		@include flex(0, 0, auto);
+		z-index: 1000;
 		background-color: $MIDNIGHT-BLUE;
 	}
 
 	> .stripes {
 		@include flex(0, 0, auto);
 		@include size(1024px 4px);
+		z-index: 1000;
 	    @include stripes($stripe-colors, to right);
 	}
 
@@ -185,6 +187,7 @@ input {
 	    @include align-items(center);
 	    @include justify-content(stretch);
 	    @include flex(0, 0, auto);
+	    z-index: 500;
 		padding: $viewer-padding;
 	}
 
@@ -417,6 +420,7 @@ input {
     
 	height: 100%;
 	background: $CLOUDS;
+	margin: 0 2%;
 	overflow: hidden;
 
 	@media screen and (max-width: $break-small) {

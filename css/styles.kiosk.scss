@@ -176,15 +176,15 @@ body {
 	background-size: cover;
     background-position: center center;
 	background-repeat: no-repeat;
-
+	
 	.control-point {
 		border: 2px solid $BELIZE-HOLE;
 		position: absolute;
 
 		background-color: white;
 		@include box-sizing(border-box);
-		@include size(8 8);
-		margin: -5px;
+		@include size(20 20);
+		margin: -11px;
 	}
 }
 
