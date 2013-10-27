@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import json
+
 def indent(elem, level=0):
     i = "\n" + level*"  "
     if len(elem):
@@ -14,3 +16,11 @@ def indent(elem, level=0):
     else:
         if level and (not elem.tail or not elem.tail.strip()):
             elem.tail = i
+
+def simple_success_response_JSON():
+    result = {}
+    result['success'] = True
+
+    print "Content-type: application/json"
+    print
+    print json.dumps(result,indent=1)

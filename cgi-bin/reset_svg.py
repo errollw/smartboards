@@ -1,27 +1,23 @@
 #!/usr/bin/env python
 
-import xml.etree.ElementTree as ET
-import json
 import cgi
 import os
-import time
 
 from utils import simple_success_response_JSON
+from shutil import copyfile
 
 args =     cgi.FieldStorage()
-svg_data = args['svg_data'].value
 u_id =     args['u_id'].value
-r_id =     args['r_id'].value
 
+### Check if SVG exists for each user. If it doesn't, create one
+### ------------------------------------------------------------
 
-### Write out that user's new SVG data
-### -------------------------------------------------------------
+svg_path = os.path.join('..', 'content')	# Path to user SVG files
+os.chdir(svg_path)
+svg_base = 'svg_base.svg'					# Name of file with basic wb SVG properties
 
-svg_path = os.path.join('..', 'content', u_id + '.svg')
-f = open(svg_path,"w")
-f.write(svg_data)
-f.close()
-
+user_svg_file = u_id + '.svg'
+copyfile(svg_base, user_svg_file)			# Copy base SVG file into the user's SVG
 
 ### Update that room's 'last-mod' field in its config file
 ### -------------------------------------------------------------
@@ -32,6 +28,4 @@ tree = ET.parse(config_path)
 tree.find('last-mod').text = str( int(time.time()) * 1000 )
 tree.write(config_path, encoding="utf-8", xml_declaration=True)
 
-### -------------------------------------------------------------
-
-simple_success_response_JSON()
+simple_success_response_JSON();
