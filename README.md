@@ -5,9 +5,10 @@ Smartboards is an interactive networked public noticeboard framework. It was dev
 smartboards was designed for large touch-screen displays that line the research group's corridor, each powered by a [Raspberry Pi](http://www.raspberrypi.org/).
 
 It has three web-app interfaces:
-1. The `kiosk` - an optimized editor designed for public terminal use
-2. The `editor` - a feature-rich editor designed for desktop or mobile use
-3. The `viewer` - a way to quickly view people's smartboards on desktop or mobile
+
+1. The **kiosk** - an optimized editor designed for public terminal use
+2. The **editor** - a feature-rich editor designed for desktop or mobile use
+3. The **viewer** - a way to quickly view people's smartboards using desktop or mobile
 
 ## kiosk
 
