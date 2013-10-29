@@ -1,0 +1,24 @@
+### EXAMPLE ROOM CONFIGURATION FILE
+###
+### place these in the config/room/ directory, labelled r_ROOM_ID.xml
+
+<?xml version='1.0' encoding='utf-8'?>
+<room id="r_ROOM_ID">                               ### unique room id (must start with 'u_')
+  <name>ROOM NAME</name>                            ### publicly visible room name
+  <last-mod>1377183199113</last-mod>
+  <tags>
+    <tag>SET</tag>                                  ### tags to assist organization or searching
+    <tag>OF</tag>
+    <tag>TAGS</tag>
+  </tags>
+  <users>
+    <user id="u_USER_ID">                           ### note: users only exist within the context of a room
+      <name>USER NAME</name>
+      <status>USER STATUS</status>
+      <website>
+        <url>OPTIONAL WEBSITE URL</url>
+        <position>WEBSITE POISITION</position>
+      </website>
+    </user>
+  </users>
+</room>

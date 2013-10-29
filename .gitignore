@@ -225,3 +225,14 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+#############
+## SVG content and room configs
+#############
+
+content/
+!content/svg_base.svg
+
+config/room/
+
+images/profile-pic/
