@@ -2,9 +2,9 @@
 
 Smartboards is an interactive networked public noticeboard framework. It was developed to facilitate remote communication between members of the [Cambridge Computer Lab](http://www.cl.cam.ac.uk/)'s [Graphics and Interaction](http://www.cl.cam.ac.uk/research/rainbow/) research group.
 
-The system was designed for large touch-screen displays located along the research group's corridor, each powered by a [Raspberry Pi](http://www.raspberrypi.org/). Members can also view and edit the boards remotely via web-apps, keeping the group updated on their status or interests.
+The system was designed for large touch-screen displays located along the research group's corridor, each powered by a [Raspberry Pi](http://www.raspberrypi.org/). Members can also view and edit the boards remotely via web-apps, keeping the group updated on their status, whereabouts, or interests.
 
-![Image of kiosk in use](http://i.imgur.com/tJ97xoL.jpg)
+![Image of kiosk in use](http://i.imgur.com/tJ97xoL.jpg "Image of kiosk in use")
 
 It is comprised of three web-app interfaces:
 
@@ -22,26 +22,26 @@ Rooms have a unique id of the form `r_ROOM_ID`, e.g. `r_01`. Each room's smartbo
 
 ## Kiosk
 
-The kiosk editor is available for a particular room at `/kiosk.html?r_id=r_ROOM_ID`.
+The kiosk editor is available for room with id `r_ROOM_ID` at `/kiosk.html?r_id=r_ROOM_ID`.
 
-Users can draw bitmaps on a *simulated whiteboard* to place within the SVG, and move and delete current SVG elements. Users can also interact with any embedded background webpages.
+Users can write or draw on a *simulated whiteboard*, generating images to place within the SVG. They can also move, resize, and delete current SVG elements. Users can also interact with any embedded background webpages.
 
 ## Editor
 
-The full editor is available for a particular room at `/editor.html?r_id=r_ROOM_ID`.
+The full editor is available for room with id `r_ROOM_ID` at `/editor.html?r_id=r_ROOM_ID`.
 
-As well as drawing with a simulated whiteboard, users can also add linked images and generate QR codes of URLs or text.
-
-A mobile-centric option for writing a quick status update will be added soon.
+As well as drawing on a simulated whiteboard, users can also add linked external images, and generate QR codes of URLs or text. A mobile-centric option for writing a quick status update will be added soon.
 
 ## Viewer
 
 The viewer is available at `/viewer.html`.
 
-It shows a list of all rooms found in the `/config/room/` directory. Users can modify each room's settings.
+It shows a list of all rooms found in the `/config/room/` directory. This can be searched or filtered using tags associated with each room. Users can also modify each room's settings, changing it's config XML file.
 
 ## Dependencies
 
 * [jQuery](http://jquery.com/) - a multi-purpose javascript library
 * [jQuery.qrcode.js](http://jeromeetienne.github.io/jquery-qrcode/) - allows the editor to generate QR codes in-browser
-* [jQuery.ScrollTo](http://demos.flesler.com/jquery/scrollTo/) - for scrolling between views in the web-app's mobile configuration 
+* [jQuery.ScrollTo](http://demos.flesler.com/jquery/scrollTo/) - for scrolling between views in the web-app's mobile configuration
+* [SASS](http://sass-lang.com/) - syntactic CSS
+* [Font Awesome](http://fontawesome.io/) - provides a range of icons as a font
