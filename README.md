@@ -22,7 +22,7 @@ Rooms have a unique id of the form `r_ROOM_ID`, e.g. `r_01`. Each room's smartbo
 
 ## Raspberry Pi
 
-Each touchscreen is powered by a rear-mounted Raspberry Pi. These devices are ideal for a large deployment of smartboards considering their low power requirements and price. They run [chromium web-browser in kiosk mode](http://lokir.wordpress.com/2012/09/16/raspberry-pi-kiosk-mode-with-chromium/) on top of Raspbian.
+Each touchscreen is powered by a rear-mounted Raspberry Pi. These devices are ideal for a large deployment of smartboards considering their low power requirements and price. They run [chromium web-browser in kiosk mode](http://lokir.wordpress.com/2012/09/16/raspberry-pi-kiosk-mode-with-chromium/) on top of [Raspbian](http://www.raspbian.org/).
 
 ![Image of Raspberry Pi](http://i.imgur.com/K1VZvjN.jpg "Mounted Raspberry Pi")
 

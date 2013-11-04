@@ -1,0 +1,148 @@
+@import 'bourbon/bourbon';
+@import "flexbox";
+@import "colors";
+@import "stripes";
+
+// ----- Variable Definitions -----
+
+$page-bg: $SILVER;
+$header-bg: $CLOUDS;
+
+$font-normal: 'Source Sans Pro', sans-serif;
+$font-mono: 'PT Mono', sans-serif;
+
+$viewer-padding: 8px;
+
+$wb-border: 0.8%;
+$mobile-padding: 3px;
+$rounded-radius: 8%;
+$padding-lrg: 10px;
+
+$page-width: 1440px;
+$break-small: 460px;
+
+// ----- The whiteboard container in the viewer webapp -----
+
+#wb-container {
+    
+	height: 100%;
+	background: $CLOUDS;
+	margin: 0 0 0 2%;
+	overflow: hidden;
+	box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+
+	@media screen and (max-width: $break-small) {
+		@include flex(0, 0, auto);						// No longer stretch or squeeze in mobile
+	    overflow: auto;									// Allow user to scroll in mobile
+	    margin: 0;
+	}
+
+    > .title-row {
+    	background-color: $BELIZE-HOLE;
+    	@include size(auto 44);
+
+    	p {text-align: center}
+
+    	// Hide when small
+		@media screen and (max-width: $break-small) {
+			padding: 0px $viewer-padding;
+		}
+    }
+
+	#panes-container {
+		@include flexbox;
+	    @include flex-dir(column);
+	    @include align-items(stretch);
+	    @include justify-content(flex-start);
+	    @include flex(0, 0, auto);
+		background: white;
+	}
+
+    .wb-pane {
+
+        @include flex(1, 0, 1px); // This item grows
+        background-color: white;
+    	overflow: hidden;
+
+    	> .divider {
+			@include flex(0, 0, auto); 		// This does not grow or shrink
+			min-height: 1px;
+			background-color: lighten($WET-ASPHALT, 50%);
+		}
+
+        .wb-header {
+
+			@include flex(0, 0, auto); 		// This does not grow or shrink
+			@include flexbox;
+			@include flex-dir(row);
+			@include align-items(stretch);
+			@include justify-content(flex-start);
+
+			background-color:   $CLOUDS;
+			font-family:        $font-normal;
+			padding: $wb-border;
+			z-index: 1000;
+
+			overflow-x: hidden;
+
+			@media screen and (max-width: $break-small) {
+				padding: $mobile-padding;
+			}
+
+            .profile-pic {
+
+				@include align-self(stretch);	// Stretch height to fill header (jQuery handles aspect ratio)
+				border-radius: 2px;
+				background-size: cover, cover;
+				background-color: darken($CLOUDS, 5%);}
+
+			> .description {
+				@include flex(1, 1, auto); 				// This item grows and shrinks
+				@include flexbox;						
+				@include flex-dir(column);
+				@include justify-content(space-between);
+				@include align-items(stretch);
+				white-space: nowrap;
+				overflow: hidden;
+
+				padding: $wb-border/2 $wb-border;
+
+				// For mobile, display in a row
+				@media screen and (max-width: $break-small) {
+					@include flex-dir(row);
+					@include justify-content(flex-start);
+					@include align-items(center);
+					padding: 0 $mobile-padding;
+				}
+
+				> .title { @include flex(0, 0, auto); color: $BELIZE-HOLE; padding-right: $mobile-padding;}
+				> .subtitle { color: $CONCRETE; }
+			}
+
+			button {
+				height: 100%;
+				padding: 0 2%;
+				margin: 0 0 0 $wb-border;
+				background-color: lighten($WET-ASPHALT, 50%);
+				color: lighten($CLOUDS, 5%);
+				@include align-self(flex-start);
+			}
+        }
+
+		.wb-content {
+
+			@include flex(1, 0, 1px); // This item grows
+
+			background-size: 100% auto;	// Scale SVG to fill width, but retain aspect ratio
+			background-position: left top;
+			background-repeat: no-repeat;
+
+			position: relative;
+			overflow: hidden;
+
+			.iframe-holder { position: absolute; top: 0px; left: 0px; }
+			.svg-holder { position: absolute; top: 0px; left: 0px;
+				@include size(100px 100px)}
+        }
+    }
+}

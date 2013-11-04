@@ -1,0 +1,149 @@
+@import 'bourbon/bourbon';
+@import "flexbox";
+@import "colors";
+@import "stripes";
+
+// ----- Variable Definitions -----
+
+$page-bg: $SILVER;
+$header-bg: $CLOUDS;
+
+$font-normal: 'Source Sans Pro', sans-serif;
+$font-mono: 'PT Mono', sans-serif;
+
+$viewer-padding: 8px;
+
+$wb-border: 0.8%;
+$mobile-padding: 3px;
+$rounded-radius: 8%;
+$padding-lrg: 10px;
+
+$page-width: 1440px;
+$break-small: 460px;
+
+//
+
+#list-container {
+	
+	@include flex(1, 1, 1px); 		// This item grows and shrinks in desktop mode
+	background-color: $CLOUDS;
+	max-width: 30%;					// Prevents it getting too large
+	height: 100%;					// Fixed height to parent
+	overflow: hidden;
+	box-shadow: 0 0 4px rgba(0,0,0,0.1);
+
+	@media screen and (max-width: $break-small) {
+		@include flex(0, 0, auto);
+	    max-width: 100%;
+	}
+
+	> .title-row {
+		@include flex(0, 0, auto);
+		z-index: 1000;
+		background-color: $MIDNIGHT-BLUE;
+	}
+
+	> .stripes {
+		@include flex(0, 0, auto);
+		@include size(1024px 4px);
+		z-index: 1000;
+	    @include stripes($stripe-colors, to right);
+	}
+
+	> .controls {
+		@include flexbox;
+	    @include flex-dir(row);
+	    @include align-items(center);
+	    @include justify-content(stretch);
+	    @include flex(0, 0, auto);
+	    z-index: 500;
+		padding: $viewer-padding;
+	}
+
+	input {
+		@include size(auto auto);
+		border: 1px solid $SILVER;
+		color: $MIDNIGHT-BLUE;
+		font-size: 14px;
+
+		&:focus { border: 1px solid $TURQUOISE; }
+	}
+
+	ul { @include flex(1, 1, auto); overflow: auto }
+
+	li {
+		@include flexbox;
+		@include flex-dir(row);
+		@include align-items(stretch);
+		@include justify-content(flex-start);
+
+		background-color: white;
+
+		padding: $viewer-padding;
+		margin: 0 $viewer-padding $viewer-padding $viewer-padding;
+
+		box-shadow: 0 1px rgba(0,0,0,0.15);
+
+		overflow: hidden;
+		white-space: nowrap;
+
+		cursor: pointer;
+
+		@media screen and (max-width: $break-small) {
+			padding: $viewer-padding;
+			margin: 0 0 $viewer-padding 0;
+		}
+		
+		&.toggled, &:hover {
+			background-color: lighten($PETER-RIVER,20%);
+			box-shadow: 0 2px $BELIZE-HOLE;
+
+			.description { 
+				.title { color: white; }
+				.subtitle { color: white; .tag { background-color: $SILVER }
+					.tag { background-color: $BELIZE-HOLE } } }
+
+			.profile-pic { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2); }
+		}
+
+		&.toggled { button.settings { display: block } }
+
+		.description {
+			@include flex(1, 2, auto); // This item grows and shrinks
+			@include align-self(stretch);
+			@include justify-content(space-between);
+			min-width: 50%;
+			overflow: hidden;
+			white-space: nowrap;
+
+			padding: 4px 0px;
+
+			.title { font-size: 15px; color: $MIDNIGHT-BLUE; }
+
+			.subtitle {
+				margin-top: 12px;
+				-webkit-font-smoothing: antialiased;
+				font-size:  13px;
+				color:      $ASBESTOS;
+
+				.tag {
+					border-radius: 2px;
+					padding: 2px 4px;
+					background-color: $CLOUDS;
+
+					// @include transition ( background-color $anim-s $anim-ease );
+				}
+			}
+		}
+
+		.profile-pic {
+			@include flex(0, 0, auto); // This item doesn't shrink
+
+			border-radius: 2px;
+			background-size: cover, cover;
+			background-color: $CLOUDS;
+
+			margin: 0 0 0 $viewer-padding;
+        }
+	}
+}

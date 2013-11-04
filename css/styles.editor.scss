@@ -46,7 +46,7 @@ body {
 	@include align-items(center);
     @include justify-content(flex-start);
 
-	background-color: $SILVER;
+	background-color: lighten($SILVER, 10%);
 
     // General font settings
     font: {
