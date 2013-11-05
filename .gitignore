@@ -236,3 +236,4 @@ content/
 config/room/
 
 images/profile-pic/
+!images/profile-pic/profile_pic_images_go_here.txt

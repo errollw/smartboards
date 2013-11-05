@@ -219,7 +219,8 @@ button {
   -ms-flex-pack: stretch;
   -webkit-justify-content: stretch;
   -moz-justify-content: stretch;
-  justify-content: stretch; }
+  justify-content: stretch;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); }
 
 .wb-pane {
   -webkit-box-flex: 1;
@@ -352,9 +353,14 @@ button {
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-      border-radius: 8%;
-      padding: 0;
-      margin: 0 0 0 0.8%; }
+      background-color: #ecf0f1;
+      color: #2980b9;
+      border-radius: 0;
+      border-right: 1px solid #cfd9db;
+      text-shadow: none;
+      padding: 0; }
+      .wb-pane > .header > button:hover {
+        background-color: #dde4e6; }
   .wb-pane > .wb-content {
     -webkit-box-flex: 1;
     -webkit-flex: 1 0 auto;

@@ -71,6 +71,8 @@ button {
     @include flex-dir(column);
     @include align-items(stretch);
     @include justify-content(stretch);
+
+    box-shadow: 0 0 8px rgba(0,0,0,0.2)
 }
 
 // (Each board may have several whiteboard panes)
@@ -142,9 +144,16 @@ button {
 			@include flex(0, 0, auto);              // This neither shrinks or grows
 			@include box-sizing(border-box);
 
-			border-radius: $rounded-radius;
+			background-color: $CLOUDS;
+			color: $BELIZE-HOLE;
+			border-radius: 0;
+			border-right: 1px solid darken($CLOUDS,10%);
+			text-shadow: none;
 			padding: 0;
-			margin: 0 0 0 $wb-border;
+
+			//&:nth-child(3){ border-right: none; }
+
+			&:hover{ background-color: darken($CLOUDS,5%); }
 		}
 	}
 
