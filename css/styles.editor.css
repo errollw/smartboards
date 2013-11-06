@@ -220,7 +220,7 @@ button {
   -webkit-justify-content: stretch;
   -moz-justify-content: stretch;
   justify-content: stretch;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); }
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2); }
 
 .wb-pane {
   -webkit-box-flex: 1;
