@@ -104,9 +104,9 @@ button {
 
 		overflow-x: hidden;
 
-		@media screen and (max-width: $break-small) {
-			padding: $mobile-padding;
-		}
+		@media screen and (max-width: $break-small) { padding: $mobile-padding; }
+
+		> .divider { height: 100%; width: 1px; background-color: darken($CLOUDS, 10%);}
 
 		> .profile-pic {
 			@include flex(0, 0, auto);              // This neither shrinks or grows
@@ -125,7 +125,7 @@ button {
 			white-space: nowrap;
 			overflow: hidden;
 
-			padding: $wb-border/2 $wb-border;
+			padding: $wb-border/2 $wb-border*1.5;
 
 			// For mobile, display in a row
 			@media screen and (max-width: $break-small) {
@@ -147,11 +147,8 @@ button {
 			background-color: $CLOUDS;
 			color: $BELIZE-HOLE;
 			border-radius: 0;
-			border-right: 1px solid darken($CLOUDS,10%);
 			text-shadow: none;
 			padding: 0;
-
-			//&:nth-child(3){ border-right: none; }
 
 			&:hover{ background-color: darken($CLOUDS,5%); }
 		}

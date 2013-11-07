@@ -274,6 +274,10 @@ button {
     @media screen and (max-width: 460px) {
       .wb-pane > .header {
         padding: 3px; } }
+    .wb-pane > .header > .divider {
+      height: 100%;
+      width: 1px;
+      background-color: #cfd9db; }
     .wb-pane > .header > .profile-pic {
       -webkit-box-flex: 0;
       -webkit-flex: 0 0 auto;
@@ -314,7 +318,7 @@ button {
       align-items: stretch;
       white-space: nowrap;
       overflow: hidden;
-      padding: 0.4% 0.8%; }
+      padding: 0.4% 1.2%; }
       @media screen and (max-width: 460px) {
         .wb-pane > .header > .description {
           -webkit-box-direction: normal;
@@ -356,7 +360,6 @@ button {
       background-color: #ecf0f1;
       color: #2980b9;
       border-radius: 0;
-      border-right: 1px solid #cfd9db;
       text-shadow: none;
       padding: 0; }
       .wb-pane > .header > button:hover {
