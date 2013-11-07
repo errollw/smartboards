@@ -162,6 +162,10 @@ body {
 	}
 }
 
+div.canvas-container {
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 0px 5px;
+}
+
 .overlay {
 	position: absolute;
 	top: 0; left: 0;
@@ -177,6 +181,8 @@ body {
     background-position: center center;
 	background-repeat: no-repeat;
 	
+	img { width: 100%; height: 100%; pointer-events: none; }
+
 	.control-point {
 		border: 2px solid $BELIZE-HOLE;
 		position: absolute;
