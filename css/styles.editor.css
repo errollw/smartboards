@@ -196,7 +196,8 @@ button {
   cursor: pointer;
   text-shadow: rgba(0, 0, 0, 0.4) 0px 1px;
   border-radius: 2px;
-  border: none; }
+  border: none;
+  margin: 0px; }
 
 #wb_container {
   display: -webkit-box;
@@ -268,12 +269,8 @@ button {
     justify-content: flex-start;
     background-color: #ecf0f1;
     font-family: "Source Sans Pro", sans-serif;
-    padding: 0.8%;
     z-index: 1000;
     overflow-x: hidden; }
-    @media screen and (max-width: 460px) {
-      .wb-pane > .header {
-        padding: 3px; } }
     .wb-pane > .header > .divider {
       height: 100%;
       width: 1px;
@@ -284,12 +281,8 @@ button {
       -moz-flex: 0 0 auto;
       -ms-flex: 0 0 auto;
       flex: 0 0 auto;
-      border-radius: 8%;
       background-color: #dde4e6;
       background-size: cover, cover; }
-      @media screen and (max-width: 460px) {
-        .wb-pane > .header > .profile-pic {
-          border-radius: 2px; } }
     .wb-pane > .header > .description {
       -webkit-box-flex: 1;
       -webkit-flex: 1 1 auto;
@@ -318,7 +311,7 @@ button {
       align-items: stretch;
       white-space: nowrap;
       overflow: hidden;
-      padding: 0.4% 1.2%; }
+      padding: 0.8% 1.2%; }
       @media screen and (max-width: 460px) {
         .wb-pane > .header > .description {
           -webkit-box-direction: normal;
@@ -354,9 +347,6 @@ button {
       -moz-flex: 0 0 auto;
       -ms-flex: 0 0 auto;
       flex: 0 0 auto;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
       background-color: #ecf0f1;
       color: #2980b9;
       border-radius: 0;
@@ -504,7 +494,8 @@ input {
   font-size: 21px;
   color: #ecf0f1;
   padding: 10px;
-  border-radius: 0 0 4px 4px; }
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2); }
   #controls p {
     text-align: center;
     margin-bottom: 8px; }

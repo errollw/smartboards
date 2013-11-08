@@ -13,8 +13,8 @@ $rounded-radius: 6px;
 $small-txt: 22px;
 $large-txt: 26px;
 
-$header-size: 64px;
-$button-size: 64px;
+$header-size: 80px;
+$button-size: 80px;
 $divider-size: 2px;
 
 
@@ -86,17 +86,21 @@ body {
 
 		background-color:   $CLOUDS;
 		font-family:        $font-normal;
-		padding: $wb-border;
 		z-index: 1000;
-
 		overflow: hidden;
+
+		> .divider { 
+			display: inline-block; 
+			float: right;
+			height: 100%; 
+			width: 1px; 
+			background-color: 
+			darken($CLOUDS, 10%);}
 
 		> .profile-pic {
 			display: inline-block;
 			float: left;
 			@include size($button-size $button-size);
-			
-			border-radius: $rounded-radius;
 			background-color: darken($CLOUDS,5);
 			background-size: cover, cover;
 		}
@@ -105,7 +109,7 @@ body {
 			display: inline-block;
 			float: left;
 			overflow: hidden;
-			margin: $wb-border/2 $wb-border;
+			margin: $wb-border*1.5 $wb-border*1.5;
 
 			> .title {
 				font-size: $large-txt;
@@ -127,15 +131,17 @@ body {
 
 			@include box-sizing(border-box);
 
-			text-shadow: rgba(0,0,0,0.4) 0px 1px;
-			border-radius: $rounded-radius;
+			background-color: $CLOUDS;
+			color: $BELIZE-HOLE;
+			border-radius: 0;
+			border:0;
+			text-shadow: none;
 			padding: 0;
-			border: 0;
-			margin: 0 0 0 $wb-border;
-			color: white;
-			font-size: $small-txt;
-			box-shadow: inset 0 -2px rgba(0,0,0,0.2);
+
+			font-size: $large-txt;
 			cursor: pointer;
+
+			&:hover{ background-color: darken($CLOUDS,5%); }
 		}
 	}
 

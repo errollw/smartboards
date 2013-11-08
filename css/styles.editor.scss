@@ -63,6 +63,7 @@ button {
 	text-shadow: rgba(0,0,0,0.4) 0px 1px;
 	border-radius: 2px;
 	border: none;
+	margin: 0px;
 }
 
 // Single column extending centrally down
@@ -99,21 +100,15 @@ button {
 
 		background-color:   $CLOUDS;
 		font-family:        $font-normal;
-		padding: $wb-border;
 		z-index: 1000;
-
 		overflow-x: hidden;
-
-		@media screen and (max-width: $break-small) { padding: $mobile-padding; }
 
 		> .divider { height: 100%; width: 1px; background-color: darken($CLOUDS, 10%);}
 
 		> .profile-pic {
 			@include flex(0, 0, auto);              // This neither shrinks or grows
-			border-radius: $rounded-radius;
 			background-color: darken($CLOUDS,5);
 			background-size: cover, cover;
-			@media screen and (max-width: $break-small) { border-radius: 2px; }
 		}
 
 		> .description {
@@ -125,7 +120,7 @@ button {
 			white-space: nowrap;
 			overflow: hidden;
 
-			padding: $wb-border/2 $wb-border*1.5;
+			padding: $wb-border $wb-border*1.5;
 
 			// For mobile, display in a row
 			@media screen and (max-width: $break-small) {
@@ -142,8 +137,7 @@ button {
 		> button {
 			
 			@include flex(0, 0, auto);              // This neither shrinks or grows
-			@include box-sizing(border-box);
-
+			
 			background-color: $CLOUDS;
 			color: $BELIZE-HOLE;
 			border-radius: 0;
@@ -267,6 +261,7 @@ input {
 	color: $CLOUDS;
 	padding: 10px;
 	border-radius: 0 0 4px 4px;
+	box-shadow: 0 0 4px rgba(0,0,0,0.2);
 
 	p {
 		text-align: center;
