@@ -45,7 +45,7 @@ $break-small: 460px;
 
 	> .stripes {
 		@include flex(0, 0, auto);
-		@include size(1024px 4px);
+		@include size(auto 4px);
 		z-index: 1000;
 	    @include stripes($stripe-colors, to right);
 	}
@@ -73,21 +73,41 @@ $break-small: 460px;
 
 	li {
 		@include flexbox;
-		@include flex-dir(row);
+		@include flex-dir(column);
 		@include align-items(stretch);
 		@include justify-content(flex-start);
 
 		background-color: white;
 
-		padding: $viewer-padding;
 		margin: 0 $viewer-padding $viewer-padding $viewer-padding;
 
-		box-shadow: 0 1px rgba(0,0,0,0.15);
+		box-shadow: 0 2px rgba(0,0,0,0.15);
 
 		overflow: hidden;
 		white-space: nowrap;
 
 		cursor: pointer;
+
+		.details {
+			@include flexbox;
+			@include flex-dir(row);
+			@include align-items(stretch);
+			@include justify-content(flex-start);
+			padding: $viewer-padding;
+		}
+
+		.controls {
+			border-top: 1px solid $BELIZE-HOLE;
+			button{
+				padding: $viewer-padding*1.5;
+				border-radius: 0;
+				background-color: $PETER-RIVER;
+				width:50%;
+
+				&:first-child{border-right: 1px solid $BELIZE-HOLE}
+				&:hover{ background-color: lighten($PETER-RIVER,5%); }
+			}
+		}
 
 		@media screen and (max-width: $break-small) {
 			padding: $viewer-padding;
@@ -95,7 +115,7 @@ $break-small: 460px;
 		}
 		
 		&.toggled, &:hover {
-			background-color: lighten($PETER-RIVER,20%);
+			background-color: $PETER-RIVER;
 			box-shadow: 0 2px $BELIZE-HOLE;
 
 			.description { 
@@ -105,8 +125,6 @@ $break-small: 460px;
 
 			.profile-pic { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2); }
 		}
-
-		&.toggled { button.settings { display: block } }
 
 		.description {
 			@include flex(1, 2, auto); // This item grows and shrinks
@@ -139,7 +157,6 @@ $break-small: 460px;
 		.profile-pic {
 			@include flex(0, 0, auto); // This item doesn't shrink
 
-			border-radius: 2px;
 			background-size: cover, cover;
 			background-color: $CLOUDS;
 

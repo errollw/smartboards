@@ -29,7 +29,7 @@ $break-small: 460px;
 	background: $CLOUDS;
 	margin: 0 0 0 2%;
 	overflow: hidden;
-	box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+	box-shadow: 0 0 6px rgba(0,0,0,0.2);
 
 	@media screen and (max-width: $break-small) {
 		@include flex(0, 0, auto);						// No longer stretch or squeeze in mobile
@@ -80,19 +80,12 @@ $break-small: 460px;
 
 			background-color:   $CLOUDS;
 			font-family:        $font-normal;
-			padding: $wb-border;
 			z-index: 1000;
-
 			overflow-x: hidden;
-
-			@media screen and (max-width: $break-small) {
-				padding: $mobile-padding;
-			}
 
             .profile-pic {
 
 				@include align-self(stretch);	// Stretch height to fill header (jQuery handles aspect ratio)
-				border-radius: 2px;
 				background-size: cover, cover;
 				background-color: darken($CLOUDS, 5%);}
 
@@ -105,7 +98,7 @@ $break-small: 460px;
 				white-space: nowrap;
 				overflow: hidden;
 
-				padding: $wb-border/2 $wb-border;
+				padding: $wb-border $wb-border*1.5;
 
 				// For mobile, display in a row
 				@media screen and (max-width: $break-small) {
@@ -117,15 +110,6 @@ $break-small: 460px;
 
 				> .title { @include flex(0, 0, auto); color: $BELIZE-HOLE; padding-right: $mobile-padding;}
 				> .subtitle { color: $CONCRETE; }
-			}
-
-			button {
-				height: 100%;
-				padding: 0 2%;
-				margin: 0 0 0 $wb-border;
-				background-color: lighten($WET-ASPHALT, 50%);
-				color: lighten($CLOUDS, 5%);
-				@include align-self(flex-start);
 			}
         }
 

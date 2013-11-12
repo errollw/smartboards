@@ -71,7 +71,7 @@ body {
     -moz-flex: 0 0 auto;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
-    width: 1024px;
+    width: auto;
     height: 4px;
     z-index: 1000;
     background-image: repeating-linear-gradient(to right, white 0px, #3498db 0px, #3498db 18px, black 18px, black 30px, white 30px, white 42px, #2ecc71 42px, #2ecc71 52px, #3498db 52px, #3498db 64px, #e74c3c 64px, #e74c3c 82px, #3498db 82px, #3498db 97px, black 97px, black 108px, #3498db 108px, #3498db 120px, #e74c3c 120px, #e74c3c 131px, white 131px, white 145px, black 145px, black 158px, #3498db 158px, #3498db 173px, white 173px, white 187px, #3498db 187px, #3498db 198px, #2ecc71 198px, #2ecc71 216px, black 216px, black 232px, #e74c3c 232px, #e74c3c 250px, black 250px, black 262px);
@@ -127,11 +127,11 @@ body {
     display: -ms-flexbox;
     display: flex;
     -webkit-box-direction: normal;
-    -webkit-box-orient: horizontal;
-    -webkit-flex-direction: row;
-    -moz-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     -webkit-box-align: stretch;
     -ms-flex-align: stretch;
     -webkit-align-items: stretch;
@@ -143,18 +143,51 @@ body {
     -moz-justify-content: flex-start;
     justify-content: flex-start;
     background-color: white;
-    padding: 8px;
     margin: 0 8px 8px 8px;
-    box-shadow: 0 1px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     white-space: nowrap;
     cursor: pointer; }
+    #list-container li .details {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-direction: normal;
+      -webkit-box-orient: horizontal;
+      -webkit-flex-direction: row;
+      -moz-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+      -webkit-align-items: stretch;
+      -moz-align-items: stretch;
+      align-items: stretch;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      -webkit-justify-content: flex-start;
+      -moz-justify-content: flex-start;
+      justify-content: flex-start;
+      padding: 8px; }
+    #list-container li .controls {
+      border-top: 1px solid #2980b9; }
+      #list-container li .controls button {
+        padding: 12px;
+        border-radius: 0;
+        background-color: #3498db;
+        width: 50%; }
+        #list-container li .controls button:first-child {
+          border-right: 1px solid #2980b9; }
+        #list-container li .controls button:hover {
+          background-color: #4aa3df; }
     @media screen and (max-width: 460px) {
       #list-container li {
         padding: 8px;
         margin: 0 0 8px 0; } }
     #list-container li.toggled, #list-container li:hover {
-      background-color: #8bc4ea;
+      background-color: #3498db;
       box-shadow: 0 2px #2980b9; }
       #list-container li.toggled .description .title, #list-container li:hover .description .title {
         color: white; }
@@ -166,8 +199,6 @@ body {
           background-color: #2980b9; }
       #list-container li.toggled .profile-pic, #list-container li:hover .profile-pic {
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2); }
-    #list-container li.toggled button.settings {
-      display: block; }
     #list-container li .description {
       -webkit-box-flex: 1;
       -webkit-flex: 1 2 auto;
@@ -204,7 +235,6 @@ body {
       -moz-flex: 0 0 auto;
       -ms-flex: 0 0 auto;
       flex: 0 0 auto;
-      border-radius: 2px;
       background-size: cover, cover;
       background-color: #ecf0f1;
       margin: 0 0 0 8px; }

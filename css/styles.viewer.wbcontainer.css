@@ -43,7 +43,7 @@ body {
   background: #ecf0f1;
   margin: 0 0 0 2%;
   overflow: hidden;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2); }
   @media screen and (max-width: 460px) {
     #wb-container {
       -webkit-box-flex: 0;
@@ -135,18 +135,13 @@ body {
       justify-content: flex-start;
       background-color: #ecf0f1;
       font-family: "Source Sans Pro", sans-serif;
-      padding: 0.8%;
       z-index: 1000;
       overflow-x: hidden; }
-      @media screen and (max-width: 460px) {
-        #wb-container .wb-pane .wb-header {
-          padding: 3px; } }
       #wb-container .wb-pane .wb-header .profile-pic {
         -webkit-align-self: stretch;
         -moz-align-self: stretch;
         -ms-flex-item-align: stretch;
         align-self: stretch;
-        border-radius: 2px;
         background-size: cover, cover;
         background-color: #dde4e6; }
       #wb-container .wb-pane .wb-header > .description {
@@ -177,7 +172,7 @@ body {
         align-items: stretch;
         white-space: nowrap;
         overflow: hidden;
-        padding: 0.4% 0.8%; }
+        padding: 0.8% 1.2%; }
         @media screen and (max-width: 460px) {
           #wb-container .wb-pane .wb-header > .description {
             -webkit-box-direction: normal;
@@ -207,16 +202,6 @@ body {
           padding-right: 3px; }
         #wb-container .wb-pane .wb-header > .description > .subtitle {
           color: #95a5a6; }
-      #wb-container .wb-pane .wb-header button {
-        height: 100%;
-        padding: 0 2%;
-        margin: 0 0 0 0.8%;
-        background-color: #b9c8d8;
-        color: #fbfcfc;
-        -webkit-align-self: flex-start;
-        -moz-align-self: flex-start;
-        -ms-flex-item-align: start;
-        align-self: flex-start; }
     #wb-container .wb-pane .wb-content {
       -webkit-box-flex: 1;
       -webkit-flex: 1 0 1px;

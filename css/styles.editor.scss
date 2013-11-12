@@ -73,7 +73,7 @@ button {
     @include align-items(stretch);
     @include justify-content(stretch);
 
-    box-shadow: 0 0 6px rgba(0,0,0,0.2)
+    box-shadow: 0 0 6px rgba(0,0,0,0.2);
 }
 
 // (Each board may have several whiteboard panes)
