@@ -3,7 +3,7 @@
 import xml.etree.ElementTree as ET
 from utils import indent
 
-def make_room(room):
+def make_room(room, order_of_users):
 
     # Set 'room' as root element
     root = ET.Element('room')
@@ -19,7 +19,10 @@ def make_room(room):
 
     # Add element for each user
     users_elem = ET.SubElement(root, 'users')
-    for u_id, vals in room['users'].iteritems():
+    for u_id in order_of_users:
+        vals = room['users'][u_id]
+    #    
+    #for u_id, vals in room['users'].iteritems():
         user_elem = ET.SubElement(users_elem, 'user')
         user_elem.set('id', u_id)
         ET.SubElement(user_elem, 'name').text = vals['name']

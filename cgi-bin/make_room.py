@@ -17,10 +17,11 @@ print ""
 
 args = cgi.FieldStorage()
 print args['json-data']
+order_of_users = json.loads(args.getvalue('order-of-users'))
 room = json.loads(args.getvalue('json-data'))
 
 # Make XML tree from room JSON
-root = make_room(room)
+root = make_room(room, order_of_users)
 indent(root)
 tree = ET.ElementTree(root)
 

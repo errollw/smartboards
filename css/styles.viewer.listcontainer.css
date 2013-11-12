@@ -48,7 +48,7 @@ body {
   max-width: 30%;
   height: 100%;
   overflow: hidden;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1); }
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2); }
   @media screen and (max-width: 460px) {
     #list-container {
       -webkit-box-flex: 0;
@@ -144,7 +144,7 @@ body {
     justify-content: flex-start;
     background-color: white;
     margin: 0 8px 8px 8px;
-    box-shadow: 0 2px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     white-space: nowrap;
     cursor: pointer; }
@@ -174,6 +174,7 @@ body {
     #list-container li .controls {
       border-top: 1px solid #2980b9; }
       #list-container li .controls button {
+        text-shadow: none;
         padding: 12px;
         border-radius: 0;
         background-color: #3498db;
@@ -184,7 +185,6 @@ body {
           background-color: #4aa3df; }
     @media screen and (max-width: 460px) {
       #list-container li {
-        padding: 8px;
         margin: 0 0 8px 0; } }
     #list-container li.toggled, #list-container li:hover {
       background-color: #3498db;

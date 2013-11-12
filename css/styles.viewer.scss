@@ -5,7 +5,7 @@
 
 // ----- Variable Definitions -----
 
-$page-bg: $SILVER;
+$page-bg: lighten($SILVER, 10%);
 $header-bg: $CLOUDS;
 
 $font-normal: 'Source Sans Pro', sans-serif;
@@ -157,18 +157,26 @@ input {
 	}
 }
 
+.absolute-floater {
+	position: absolute;
+	top:0;
+	right:0;
+}
+
 #settings-container {
 	@include flex(3, 1, 1px); // This item grows and shrinks
 	height: 100%;	
 	overflow: hidden;
 	background-color: lighten($WET-ASPHALT, 5%);
+	z-index: 2000;
 
 	max-width: 30%;
-	margin: 0 0 0 2%;
+	margin: 0;
+
+	box-shadow: 0 0 6px rgba(0,0,0,0.2);
 
 	@media screen and (max-width: $break-small) {
 		@include flex(0, 0, auto);
-		margin: 0;
 	    max-width: 100%; }
 
 	> .title-row {

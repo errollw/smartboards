@@ -113,7 +113,7 @@ body {
   height: 100%;
   margin: auto;
   max-width: 1400px;
-  background: #bdc3c7;
+  background: #d9dcde;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1em;
   font-weight: 400;
@@ -246,6 +246,11 @@ input {
     .title-row > button:hover {
       background-color: rgba(0, 0, 0, 0.2); }
 
+.absolute-floater {
+  position: absolute;
+  top: 0;
+  right: 0; }
+
 #settings-container {
   -webkit-box-flex: 3;
   -webkit-flex: 3 1 1px;
@@ -255,8 +260,10 @@ input {
   height: 100%;
   overflow: hidden;
   background-color: #3d566e;
+  z-index: 2000;
   max-width: 30%;
-  margin: 0 0 0 2%; }
+  margin: 0;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2); }
   @media screen and (max-width: 460px) {
     #settings-container {
       -webkit-box-flex: 0;
@@ -264,7 +271,6 @@ input {
       -moz-flex: 0 0 auto;
       -ms-flex: 0 0 auto;
       flex: 0 0 auto;
-      margin: 0;
       max-width: 100%; } }
   #settings-container > .title-row {
     background-color: #3498db; }

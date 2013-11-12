@@ -30,7 +30,7 @@ $break-small: 460px;
 	max-width: 30%;					// Prevents it getting too large
 	height: 100%;					// Fixed height to parent
 	overflow: hidden;
-	box-shadow: 0 0 4px rgba(0,0,0,0.1);
+	box-shadow: 0 0 6px rgba(0,0,0,0.2);
 
 	@media screen and (max-width: $break-small) {
 		@include flex(0, 0, auto);
@@ -81,7 +81,7 @@ $break-small: 460px;
 
 		margin: 0 $viewer-padding $viewer-padding $viewer-padding;
 
-		box-shadow: 0 2px rgba(0,0,0,0.15);
+		box-shadow: 0 0 6px rgba(0,0,0,0.2);
 
 		overflow: hidden;
 		white-space: nowrap;
@@ -99,6 +99,7 @@ $break-small: 460px;
 		.controls {
 			border-top: 1px solid $BELIZE-HOLE;
 			button{
+				text-shadow: none;
 				padding: $viewer-padding*1.5;
 				border-radius: 0;
 				background-color: $PETER-RIVER;
@@ -110,7 +111,6 @@ $break-small: 460px;
 		}
 
 		@media screen and (max-width: $break-small) {
-			padding: $viewer-padding;
 			margin: 0 0 $viewer-padding 0;
 		}
 		
